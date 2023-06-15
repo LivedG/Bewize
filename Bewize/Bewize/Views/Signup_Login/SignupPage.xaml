@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Bewize.Views.SignupPage" BackgroundColor="White"
+    xmlns:VM="clr-namespace:Bewize.ViewModels" NavigationPage.HasNavigationBar="False"
+     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="True">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <VM:SignupPageVM x:Key="VM"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <StackLayout  HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand" Padding="14,10,15,0" >
+       
+        <Grid VerticalOptions="Center" Padding="5,0,10,10">
+            <Grid.RowDefinitions>
+                   <RowDefinition Height="45" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+              <Label Text="Select a sign up method" 
+               Grid.Row="0" Grid.Column="1" VerticalTextAlignment="Center"
+               TextColor="#000000" FontFamily="Source Sans Pro" FontSize="26" FontAttributes="Bold" />
+
+             <Button x:Name="Backbtn" Grid.Row="0" Grid.Column="0" ImageSource="Backbtn.jpg" HeightRequest="40" WidthRequest="40" Margin="10" 
+                     Command="{Binding Source={StaticResource VM},Path=Backbtn_Command}"/>
+       
+        </Grid>
+        <Button x:Name="Emailsignupbtn" Margin="15,40,15,10" FontSize="Small" Text="Sign Up with Email" TextColor="#393939" BorderWidth="1" BorderColor="#393939"
+                HeightRequest="48" CornerRadius="24"  BackgroundColor="#ffffff" FontFamily="Source Sans Pro" ImageSource="maillogo.jpg"
+                 Command="{Binding Source={StaticResource VM},Path=SignupwithMail_command}"/>
+         <Button x:Name="Numbersignupbtn" Margin="15,10,15,10" FontSize="Small" Text="Sign Up with phone number" TextColor="#393939" BorderWidth="1" BorderColor="#393939"
+                HeightRequest="48" CornerRadius="24"  BackgroundColor="#ffffff" FontFamily="Source Sans Pro" ImageSource="Call.jpg"
+                 Command="{Binding Source={StaticResource VM},Path=Signupwithnumber_command}"/>
+
+        <Button x:Name="Applesignbtn" Margin="15,10,15,10" FontSize="Small" Text="Sign up with Apple" TextColor="#393939" BorderWidth="1" BorderColor="#393939" HeightRequest="48" CornerRadius="24"  BackgroundColor="#ffffff" FontFamily="Source Sans Pro"
+                ImageSource="applelogo.jpg" HorizontalOptions="Fill"  Command="{Binding Source={StaticResource VM},Path=SignupwithApple_Command}">
+        <Button.IsVisible>
+            <OnPlatform x:TypeArguments="x:Boolean">
+                <On Platform="iOS">true</On>
+                <On Platform="Android">false</On>
+            </OnPlatform>
+        </Button.IsVisible>
+        </Button>
+        <Button x:Name="Googlesignbtn" Margin="15,10,15,30" FontSize="Small" Text="Sign up with Goolge" TextColor="#393939" BorderWidth="1" BorderColor="#393939" HeightRequest="48"
+                CornerRadius="24"  BackgroundColor="#ffffff" FontFamily="Source Sans Pro" ImageSource="googlelogo.jpg" Command="{Binding Source={StaticResource VM},Path=SignupwithGoogle_Command}"/>
+         <Label TextType="Html"  FontSize="Small" Padding="42,5,42,28" TextColor="#4D4D4D" HorizontalTextAlignment="Center" FontFamily="Source Sans Pro">
+           
+        </Label>
+    </StackLayout>
+</ContentPage>
+

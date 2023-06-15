@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Bewize.Views.Signup_Login.MainPage_"
+    BackgroundColor="#2B92FC"
+             xmlns:VM="clr-namespace:Bewize.ViewModels" NavigationPage.HasNavigationBar="False"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="True">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <VM:MainPageVM x:Key="VM"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout  HorizontalOptions="Center" VerticalOptions="End">
+        
+        <Image Margin="20,85,20,30" x:Name="Logoimg" Source="Title.png" HeightRequest="42" WidthRequest="100"></Image>  
+        <Label Text="Let us guide you to safety" FontSize="Title" Padding="15,10,20,10" TextColor="#ffffff" FontAttributes="Bold" FontFamily="Source Sans Pro" HorizontalTextAlignment="Center" />
+        <Label  FontSize="Medium" Padding="20,5,20,28" TextColor="#ffffff" Text="BeWize and let us guide and connect you to explore communities across the nation in a safe &amp; responsible way." HorizontalTextAlignment="Center" FontFamily="Source Sans Pro "/>
+        <Button x:Name="Signupbtn" Margin="30,8,30,8" FontSize="Medium" Text="Sign Up for BeWize"
+                TextColor="#FFFFFF" BorderWidth="1" BorderColor="#FFFFFF" HeightRequest="48"
+                CornerRadius="24"  BackgroundColor="#2B92FC" FontFamily="Source Sans Pro"
+                Command="{Binding Source={StaticResource VM},Path=Signup_command}"/>
+
+        <Button x:Name="loginbtn" Margin="30,8,30,15" FontSize="Medium" Text="Log in" TextColor="#FFFFFF" BorderWidth="1" BorderColor="#FFFFFF"
+                HeightRequest="48" CornerRadius="24"  BackgroundColor="#2B92FC" FontFamily="Source Sans Pro"
+                 Command="{Binding Source={StaticResource VM},Path=Login_Command}"/>
+
+         <Image  x:Name="footerimg" Source="loginscreen.png" Aspect="AspectFill" Margin="0,8,0,5"></Image>
+       
+    </StackLayout>
+ 
+</ContentPage>
+

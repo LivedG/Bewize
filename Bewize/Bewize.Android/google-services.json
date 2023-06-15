@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "313892348242",
+    "project_id": "bewize-376513",
+    "storage_bucket": "bewize-376513.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:313892348242:android:c17c33e2d032b22dc65a8b",
+        "android_client_info": {
+          "package_name": "com.BeWize.BeWize_Android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "313892348242-2qsrnbtmupkm4bamobeamv81det79rhl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.BeWize.BeWize_Android",
+            "certificate_hash": "8084443bb5ebbd6329f01138de50c87b928a98d3"
+          }
+        },
+        {
+          "client_id": "313892348242-91tuie79aqchmtadu56ogrm3nnk67udn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9n4v2fMqP1jygxlz3JOW52GC_7HNef0M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "313892348242-4i7armhtu5t11orad5ttuq3789rd0ccb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "313892348242-0fmkp0ab37s3vjiiffphan7b3hn5r94u.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.BeWize.BeWize-iOS"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Bewize.Views.Signup_Login.Loginbynumber"
+    xmlns:local="clr-namespace:Bewize.RenderFiles"
+    xmlns:VM="clr-namespace:Bewize.ViewModels"
+   NavigationPage.HasNavigationBar="False"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" BackgroundColor="White" xmlns:behave="clr-namespace:Bewize.Behaviour" xmlns:Helpers="clr-namespace:Bewize.HelperResource" x:DataType="VM:LoginPageVM" ios:Page.UseSafeArea="True">
+
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <VM:LoginPageVM x:Key="VM"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+  <ScrollView Padding="5">
+    <StackLayout  HorizontalOptions="Center" VerticalOptions="FillAndExpand">
+        <Grid VerticalOptions="Center" Padding="8,15,10,8">
+            <Grid.RowDefinitions>
+                   <RowDefinition Height="40" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+              <Label Text="Log in" 
+               Grid.Row="0" Grid.Column="1" VerticalTextAlignment="Center" HorizontalOptions="Center"
+               TextColor="#000000" FontFamily="Source Sans Pro" FontSize="26" FontAttributes="Bold" />
+
+              <Button x:Name="Backbtn" Grid.Row="0" Grid.Column="0" ImageSource="Backbtn.jpg" HeightRequest="40" WidthRequest="40" Margin="10" 
+                     Command="{Binding Source={StaticResource VM},Path=LoginBackbtn_Command}"/>
+       
+        </Grid>
+          <Label Padding="20,0,0,40"  Text="Log in to begin an amazing journey" HorizontalOptions="CenterAndExpand" FontSize="18"  TextColor="#4D4D4D" FontFamily="Source Sans Pro" />
+          <Label Text="Sign in your account" HorizontalOptions="Start"
+                   TextColor="#000000" FontFamily="Source Sans Pro" HeightRequest="40" FontSize="26" FontAttributes="Bold" Padding="25,0,25,0" />
+          <Label Text="Enter your mobile number" 
+               TextColor="#000000" FontFamily="Source Sans Pro"  FontSize="16" HeightRequest="20"  Margin="25,2,22,2" />
+
+            <Grid Margin="22,5,22,10" HorizontalOptions="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="0.8"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+            <Image Grid.Column="0"    Margin="2,0,0,0" Grid.Row="0" Source="{Binding selectedCountry.flag ,Mode=TwoWay}"/>
+            <local:CustomEntry x:Name="Countrycodetxt" Margin="2,0,0,0" BackgroundColor="#00FFFFFF"   Text="{Binding selectedCountry.country_code, Mode=TwoWay}"
+               FontFamily="Source Sans Pro" Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Start" 
+                 FontSize="16"  PlaceholderColor="#80393939" Placeholder="+ 91" MaxLength="4" Focused="CustomEntry_Focused" />
+            <local:CustomEntry x:Name="pnumbertxt" Margin="12,0,23,0" BackgroundColor="#00FFFFFF"   Text="{Binding user.phone, Mode=TwoWay}"
+               FontFamily="Source Sans Pro" Grid.Row="0" Grid.Column="2" MaxLength="10" PlaceholderColor="#80393939"
+               FontSize="16" Keyboard="Numeric"  Placeholder="Enter your mobile number">
+            </local:CustomEntry>
+            <Label Margin="2,0,22,0" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#4D4D4D" HeightRequest="0.8"> </Label>
+            <Label Margin="8,0,23,0" Grid.Row="1" Grid.Column="2" BackgroundColor="#4D4D4D" HeightRequest="0.8"> </Label>
+              
+          </Grid>
+
+           <Label Text="Password" 
+              VerticalTextAlignment="Center"
+               TextColor="#000000" FontFamily="Source Sans Pro" FontSize="16" HeightRequest="20" Margin="25,5,22,2" />
+          <Grid Margin="25,2,22,0">
+             <Grid.ColumnDefinitions>
+                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="35" />
+          </Grid.ColumnDefinitions>
+               <local:CustomEntry  BackgroundColor="#00FFFFFF"  
+               FontFamily="Source Sans Pro" x:Name="pwdtxt"  Text="{Binding user.password, Mode=TwoWay}"
+                 FontSize="18" Keyboard="Default" IsPassword="True" PlaceholderColor="#80393939" Placeholder="Enter your password" Grid.Row="0" Grid.Column="0">
+                     <local:CustomEntry.Behaviors>
+                        <behave:PasswordValidationBehavior/>
+                    </local:CustomEntry.Behaviors>
+                </local:CustomEntry>
+           <ImageButton x:Name="Showpwdbtn" BackgroundColor="#00ffffff" Grid.Row="0" Grid.Column="1" WidthRequest="25" HeightRequest="28" Source="Eye.png"  VerticalOptions="Center"
+                   Clicked="Showpwdbtn_Clicked" HorizontalOptions="Center" Aspect="AspectFit"></ImageButton>
+            
+          </Grid>
+         
+         <Label Margin="25,2,23,0" BackgroundColor="#4D4D4D" HeightRequest="0.8"> </Label>
+        
+           <Label Text="Forgot password?" Margin="25,2,25,0"
+              HorizontalOptions="End" TextColor="#000000" FontFamily="Source Sans Pro" FontSize="16" HeightRequest="20">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer 
+                            Command="{Binding Source={StaticResource VM},Path=forgetlblTap_command}"
+                            NumberOfTapsRequired="1" />
+                    </Label.GestureRecognizers>
+           </Label>
+
+           <Button x:Name="Loginbtn" Margin="25,45,25,10" FontSize="16" Text="Log in" TextColor="#ffffff" BorderWidth="1"  HeightRequest="48" CornerRadius="24"
+                   BackgroundColor="#0066FF" FontFamily="Source Sans Pro" FontAttributes="Bold" BorderColor="#ffffff"
+                    Clicked="Loginbtn_Clicked"/>
+           <Label Text="or log in with" Margin="22,10,22,0"
+              VerticalTextAlignment="Center" HorizontalOptions="Center"
+               TextColor="#4D4D4D" FontFamily="Source Sans Pro" FontSize="16" HeightRequest="20" />
+         
+            <Grid VerticalOptions="Center" HorizontalOptions="Center" Padding="8,2,10,22">
+            <Grid.RowDefinitions >
+                    <RowDefinition Height="40" />
+            </Grid.RowDefinitions>
+
+          <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="45"/>
+                    <ColumnDefinition Width="45"/>
+                    <ColumnDefinition Width="45"/>
+          </Grid.ColumnDefinitions>
+
+            <ImageButton x:Name="Mailsignbtn"  Source="maillogo.jpg" Grid.Row="0" Grid.Column="0" WidthRequest="35"
+                         HeightRequest="35" CornerRadius="8" VerticalOptions="Center" HorizontalOptions="Center" />
+            <ImageButton x:Name="googlesignbtn"   VerticalOptions="Center" HorizontalOptions="Center" Source="googlelogo.jpg" Grid.Row="0" Grid.Column="2" WidthRequest="35" HeightRequest="35" CornerRadius="8"  Clicked="googlesignbtn_Clicked"></ImageButton>
+             <ImageButton x:Name="Applesignbtn"  VerticalOptions="Center"  HorizontalOptions="Center" Source="applelogo.jpg" Grid.Row="0" Grid.Column="1" WidthRequest="35" HeightRequest="35" CornerRadius="8"  Clicked="Applesignbtn_Clicked">
+                 <ImageButton.IsVisible>
+                    <OnPlatform x:TypeArguments="x:Boolean">
+                        <On Platform="iOS">true</On>
+                        <On Platform="Android">false</On>
+                    </OnPlatform>
+                 </ImageButton.IsVisible>
+            </ImageButton>
+            </Grid>
+
+         
+         <Grid Padding="22,38,22,1" HorizontalOptions="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                     <ColumnDefinition Width="*" />
+                     <ColumnDefinition Width="180" />
+                     <ColumnDefinition Width="100" />
+                     <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+              <Label Text="Don’t have an account?" Grid.Row="0" Grid.Column="1" VerticalOptions="Center" HorizontalTextAlignment="End" HorizontalOptions="End"
+               TextColor="#4D4D4D" FontFamily="Source Sans Pro" FontSize="16" HeightRequest="22"/>  
+              <!--<Button Grid.Row="0" Grid.Column="2" Text="Sign up" VerticalOptions="Center" HorizontalOptions="Start" FontSize="18" BackgroundColor="#00ffffff"
+                     TextColor="CornflowerBlue" HeightRequest="22" Command="{Binding Source={StaticResource VM},Path=Signup_command}"></Button>-->
+                <!--<Button Grid.Row="0" Grid.Column="2" Text="Sign up" FontSize="18" HeightRequest="22" TextColor="CornflowerBlue"> </Button>-->
+                <Label Grid.Row="0" Grid.Column="2" Text="Sign up" TextColor="CornflowerBlue" FontFamily="Source Sans Pro"  VerticalOptions="Center"
+                       HorizontalOptions="Start" FontSize="16" BackgroundColor="#00ffffff">
+                      <Label.GestureRecognizers>
+                    <TapGestureRecognizer 
+                           Command="{Binding Source={StaticResource VM},Path=Signup_command}"
+                            NumberOfTapsRequired="1" />
+                    </Label.GestureRecognizers>
+
+                </Label>
+         </Grid>
+     <Label HeightRequest="8" Padding="1"></Label>
+    </StackLayout>
+    </ScrollView>
+</ContentPage>
+

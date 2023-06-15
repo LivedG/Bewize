@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Bewize.RenderFiles"
+    NavigationPage.HasNavigationBar="False"
+    x:Class="Bewize.Views.Home.Homepage" BackgroundColor="White"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:VM="clr-namespace:Bewize.ViewModels" ios:Page.UseSafeArea="True">
+
+        
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <VM:CurrentLocationHomepgVM x:Key="VM"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+    <StackLayout Padding="20,10,20,10" VerticalOptions="FillAndExpand" BackgroundColor="#ffffff" >
+        <Grid VerticalOptions="Center" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="65"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                 <ColumnDefinition Width="55"/>
+                 <ColumnDefinition Width="*"/>
+                 <ColumnDefinition Width="55"/>
+                 <ColumnDefinition Width="55"/>
+            </Grid.ColumnDefinitions>
+             <ImageButton x:Name="Hambugermenubtn1" x:FieldModifier="public"  Grid.Row="0" Grid.Column="0" WidthRequest="30" HeightRequest="30" Source="Menuicon2.png"  CornerRadius="8" HorizontalOptions="Center" Aspect="AspectFit" BackgroundColor="#00ffffff"></ImageButton>
+            <Image x:Name="Locationimg" Source="locationpin.png" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer  Command="{Binding Source={StaticResource VM},Path=getLocationdetails_cmd}"
+                                NumberOfTapsRequired="2"  />
+                </Image.GestureRecognizers>
+            </Image>
+            <Image x:Name="profileimage" VerticalOptions="Center" Grid.Row="0" Grid.Column="3" Source="usericon.png" WidthRequest="55" HeightRequest="65" ></Image>
+        </Grid>
+             <Grid VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions><RowDefinition Height="*"/></Grid.RowDefinitions>
+                <Grid.ColumnDefinitions> <ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+                  <local:CustomSearchbar  x:Name="homepgsearchbar" Margin="5,2,5,0" VerticalOptions="Start" HorizontalOptions="StartAndExpand" FontSize="16" BackgroundColor="#00FFFFFF" TextColor="#000000" PlaceholderColor="#80393939" Placeholder="search by nearby place" />   
+             </Grid>
+             <Frame HeightRequest="150" Margin="2,10,2,15" CornerRadius="15" BorderColor="#ffffff" HasShadow="True" Opacity="0.8" HorizontalOptions="FillAndExpand">
+                 <StackLayout>
+                 <Grid HorizontalOptions="End" >
+                     <Grid.RowDefinitions>
+                       <RowDefinition Height="22" />
+                    </Grid.RowDefinitions>
+                     <Grid.ColumnDefinitions>
+                         <ColumnDefinition Width="*"/>
+                         <ColumnDefinition Width="68"/>
+                         <ColumnDefinition  Width="12"/>
+                         <ColumnDefinition  Width="12"/>
+                         <ColumnDefinition  Width="12"/>
+                         <ColumnDefinition  Width="16"/>
+                         <ColumnDefinition  Width="12"/>
+                         <ColumnDefinition  Width="12"/>
+                         <ColumnDefinition  Width="12"/>
+                         <ColumnDefinition  Width="45"/>
+                     </Grid.ColumnDefinitions>
+                     <Label Grid.Row="0" Grid.Column="0"></Label>
+                     <Label Grid.Row="0" Grid.Column="1"  FontFamily="Source Sans Pro" Text="Least Safe" FontSize="14" TextColor="#4D4D4D" VerticalOptions="Center" HorizontalOptions="End"/>
+                     <Button Grid.Row="0" Grid.Column="2" BackgroundColor="#FF3D00" CornerRadius="6" WidthRequest="12" HeightRequest="12" VerticalOptions="Center" HorizontalOptions="End"/>
+                      <Button Grid.Row="0" Grid.Column="3" BackgroundColor="#FFA35C" CornerRadius="6" WidthRequest="12" HeightRequest="12" VerticalOptions="Center"/>
+                     <Button Grid.Row="0" Grid.Column="4" BackgroundColor="#FFC700" CornerRadius="6" WidthRequest="12" HeightRequest="12" VerticalOptions="Center"/>
+                     <Button Grid.Row="0" Grid.Column="5" BackgroundColor="#68D2F9" CornerRadius="8" WidthRequest="16" HeightRequest="16" VerticalOptions="Center"/>
+                     <Button Grid.Row="0" Grid.Column="6" BackgroundColor="#B6E59E" CornerRadius="6" WidthRequest="12" HeightRequest="12" VerticalOptions="Center"/>
+                     <Button Grid.Row="0" Grid.Column="7" BackgroundColor="#41E298" CornerRadius="6" WidthRequest="12" HeightRequest="12" VerticalOptions="Center"/>
+                     <Button Grid.Row="0" Grid.Column="8" BackgroundColor="#05A859" CornerRadius="6" WidthRequest="12" HeightRequest="12" VerticalOptions="Center" HorizontalOptions="End"/>
+                     <Label Grid.Row="0" Grid.Column="9" FontFamily="Source Sans Pro" Text="Safest" FontSize="14" TextColor="#4D4D4D" HorizontalOptions="End"/>
+                   </Grid>
+                   <Label Margin="10,12,10,0" TextColor="#2B92FC" FontFamily="Source Sans Pro" FontSize="14" Text="7588-7598 s 51st Ave"></Label>
+                     <Grid VerticalOptions="Center" > <Grid.RowDefinitions>
+                         <RowDefinition Height="48"/>
+                     </Grid.RowDefinitions>
+                         <Grid.ColumnDefinitions>
+                             <ColumnDefinition Width="*"></ColumnDefinition><ColumnDefinition Width="80"/>
+                         </Grid.ColumnDefinitions>
+                         <Label  VerticalOptions="Center" FontFamily="Source Sans Pro" Text="BeWize Safety Score" Margin="6" Grid.Column="0" FontSize="20" TextColor="#000000" FontAttributes="Bold"></Label>
+                         <Label  VerticalOptions="Center" FontFamily="Source Sans Pro" Text="4.6"  Grid.Column="1" FontSize="40" TextColor="#68D2F9" FontAttributes="Bold"></Label>
+
+                     </Grid>
+                 </StackLayout>
+             </Frame>
+             
+
+    </StackLayout>
+</ContentPage>
+

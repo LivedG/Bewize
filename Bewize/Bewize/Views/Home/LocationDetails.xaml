@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>  
+<popup:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"  
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+                 xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" xmlns:VM="clr-namespace:Bewize.ViewModels" xmlns:local="clr-namespace:Bewize.Models"  
+                 CloseWhenBackgroundIsClicked="True"  
+                 x:Class="Bewize.Views.Home.LocationDetails">
+
+    
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <VM:LocationDetailsVM x:Key="VM"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <popup:PopupPage.Content>
+        <Frame CornerRadius="30" HeightRequest="450" Margin="30,120,30,20" HorizontalOptions="Center"  
+                     VerticalOptions="Start">
+        <StackLayout Margin="5" IsClippedToBounds="True" 
+                     BackgroundColor="White"  
+                     HorizontalOptions="Center"  
+                     VerticalOptions="Start">  
+                <Grid Margin="10">
+                   <Grid.RowDefinitions>
+                       <RowDefinition Height="25"/>
+                       <RowDefinition Height="25"/>
+                       <RowDefinition Height="25"/>
+                       <RowDefinition Height="*"/>
+                   </Grid.RowDefinitions>
+                   <Grid.ColumnDefinitions>
+                     <ColumnDefinition Width="*" />
+                     <ColumnDefinition Width="*" />
+                   </Grid.ColumnDefinitions>
+                    <Label  Grid.Row="0" Grid.Column="0" />
+                    <ImageButton  BackgroundColor="White" x:Name="popupClosebtn" Grid.Column="1" Grid.Row="0" Source="Close.png" Aspect="AspectFill"  HorizontalOptions="End" VerticalOptions="Center" Command="{Binding Source={StaticResource VM},Path=popupClosebtn}"/> 
+                    <Label  x:Name="Locationnamelbl" Grid.Column="0" Grid.ColumnSpan="2" HorizontalTextAlignment="Start" Grid.Row="1" Text="35861 N 50TH ST" VerticalOptions="Center"  FontFamily="Source Sans Pro" FontAttributes="Bold" TextColor="#000000"/>
+                    <Label  x:Name="Addresslbl" HorizontalTextAlignment="Start" Grid.Column="0" Grid.Row="2" Text="Phoenix, AZ" FontFamily="Source Sans Pro" VerticalOptions="Center" TextColor="#000000"></Label>
+                    <Label  x:Name="Ratinglbl" Grid.Column="1" Grid.Row="2"  FontFamily="Source Sans Pro" VerticalOptions="Center" HorizontalTextAlignment="End" Text="Total Rating : 1" TextColor="#959595"/>
+                    <Label  x:Name="desciptionlbl" Grid.Column="0" Grid.Row="3"   FontFamily="Source Sans Pro" VerticalOptions="Center" HorizontalTextAlignment="End" Text="Total Rating : 1" TextColor="#959595" HeightRequest="0"/>
+                </Grid>
+                <!--<ListView Grid.Row="1" Grid.Column="0" RowHeight="95"  SeparatorVisibility="None" VerticalOptions="Center" >
+                      <ListView.ItemsSource>
+                         <x:Array Type="{x:Type local:LocationScoreDetails}" >
+                            <local:LocationScoreDetails  BEWISESCORE="Bewize Score" Ratecount="75/100" RatingStatus="Safe"  />
+                            <local:LocationScoreDetails  Scoretitle="Bewize Score" Ratecount="75/100" RatingStatus="Safe"  />
+                         </x:Array>
+                    </ListView.ItemsSource>
+                       <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell >
+                                      <Frame BackgroundColor="#ffffff" Margin="2,11,2,11" CornerRadius="15"  VerticalOptions="StartAndExpand" HorizontalOptions="Center">
+                                        <StackLayout BackgroundColor="#ffffff" Margin="0,-2,0,2"  VerticalOptions="Start">
+                                             <Grid>
+                                                  <Grid.RowDefinitions>
+                                                       <RowDefinition Height="22"/> <RowDefinition Height="32"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" /> 
+                                                   <ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
+                                                   <Label  Grid.Row="0" Grid.Column="0"  TextColor="#4D4D4D" Text="Bewise Score" HorizontalTextAlignment="Start" FontSize="15" VerticalTextAlignment="Start" VerticalOptions="Start"></Label>
+                                                   <Label  Grid.Row="0" Grid.Column="1"  TextColor="#19CA7D"  Text="Felt very Safe" FontAttributes="Bold" HorizontalTextAlignment="End" FontSize="16" VerticalOptions="Start" VerticalTextAlignment="Start"></Label>
+                                                   <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" TextColor="#0066FF" Text="5.0/5" FontSize="19" FontAttributes="Bold" VerticalOptions="Start"/>
+                                             </Grid>
+                                        </StackLayout> </Frame>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                    </ListView>-->
+
+                    <Button Margin="18" BackgroundColor="#0066FF" Text="View Details"  FontSize="18" TextColor="#ffffff" HeightRequest="60" CornerRadius="30"
+                            Command="{Binding Source={StaticResource VM},Path=ViewDetailsbtn}"></Button>
+        </StackLayout>  </Frame>
+    </popup:PopupPage.Content>  
+</popup:PopupPage>  

@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Bewize.Views.MyRating.MyRatingsListPage"
+    BackgroundColor="#ffffff"  xmlns:VM="clr-namespace:Bewize.ViewModels" 
+    NavigationPage.HasNavigationBar="False"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="True">
+          <ContentPage.Resources>
+        <ResourceDictionary>
+            <VM:MyratingsListVM x:Key="VM"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+   <StackLayout  HorizontalOptions="Center" VerticalOptions="FillAndExpand" >
+        <Grid VerticalOptions="Center" Padding="8,15,10,15">
+            <Grid.RowDefinitions>
+                   <RowDefinition Height="40" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Label Text="My Ratings" 
+               Grid.Row="0" Grid.Column="1" VerticalTextAlignment="Center" HorizontalOptions="Center"
+               TextColor="#000000" FontFamily="Source Sans Pro" FontSize="26" FontAttributes="Bold" />
+
+            <Button x:Name="Backbtn" Grid.Row="0" Grid.Column="0" ImageSource="Backbtn.jpg" HeightRequest="40" WidthRequest="40" Margin="10"
+                    Command="{Binding Source={StaticResource VM},Path=Closebtn_Command}"/>
+        </Grid>
+        <SearchBar PlaceholderColor="#80393939" Placeholder="Search" BackgroundColor="#00BBBBBB" Margin="20,20,20,10" > 
+        </SearchBar>
+             <ScrollView > 
+              <CollectionView x:Name="MyRatingListView" x:FieldModifier="public"  BackgroundColor="#ffffff" BindableLayout.ItemsSource="{Binding MyRatingsDetailsList}" >
+                  <BindableLayout.ItemTemplate>
+                  <DataTemplate>
+                      <Frame Margin="15,10,15,10" BorderColor="#E2E2E2" BackgroundColor="#ffffff" HasShadow="True" IsClippedToBounds="True" CornerRadius="25"> 
+                         <Grid>
+                           <Grid.RowDefinitions>
+                                      <RowDefinition Height="45"/>
+                                      <RowDefinition Height="22"/>
+                                      <RowDefinition Height="18"/>
+                                      <RowDefinition Height="45"/>
+                                      <RowDefinition Height="0.8"/>
+                                      <RowDefinition Height="*"/>
+                                      <RowDefinition Height="0.8"/>
+                                      <RowDefinition Height="65"/>
+                               </Grid.RowDefinitions>
+                           <Grid.ColumnDefinitions>
+                               <ColumnDefinition Width="*"/>
+                               <ColumnDefinition Width="35"/>
+                               <ColumnDefinition Width="35"/>
+                           </Grid.ColumnDefinitions>
+                               <Label x:Name="titlelbl" Grid.Row="0" VerticalTextAlignment="Center" Grid.Column="0" Text="{Binding name}" FontFamily="Source Sans Pro" TextColor="#000000"  FontAttributes="Bold" FontSize="22" />
+                               <Image x:Name="starimg" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Source="FiveStarBar.png" Aspect="AspectFit" ></Image>
+                               <Label x:Name="Addresslbl" Grid.Row="1" VerticalTextAlignment="Center" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding Address}" FontFamily="Source Sans Pro" TextColor="#000000"  FontSize="18"/>
+                               <Label x:Name="Posttiminglbl" Grid.Row="2" VerticalTextAlignment="Center" Grid.Column="0" Grid.ColumnSpan="3" Text="{Binding updatedAt}" FontFamily="Source Sans Pro" TextColor="#959595"  FontSize="14"/>
+                               <Button Grid.Row="3" Grid.Column="0"  VerticalOptions="Center" Margin="0,0,0,-12"  HorizontalOptions="Start" FontSize="Medium" FontAttributes="Bold" Text="View"
+                                       TextColor="CornflowerBlue" BackgroundColor="#00ffffff"  Clicked="Button_Clicked"></Button>
+                                <Label  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" VerticalOptions="Center" HeightRequest="0.6" BackgroundColor= "#959595"></Label>
+                                <!--<StackLayout x:Name="contactNestedList" BindableLayout.ItemsSource="{Binding MyRatingsDetailsList.my_ratings}" HeightRequest="150">
+                                    <BindableLayout.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                             <Grid.RowDefinitions> 
+                                                <RowDefinition Height="35"/> <RowDefinition Height="0.8"/>  </Grid.RowDefinitions>
+                                             <Grid.ColumnDefinitions>
+                                              <ColumnDefinition Width="*"/>
+                                              <ColumnDefinition Width="35"/>
+                                              <ColumnDefinition Width="35"/>
+                                              </Grid.ColumnDefinitions>
+                                             <Label x:Name="titlelbl" Grid.Row="0" Grid.Column="0" TextColor="#4D4D4D" Text="test" FontSize="16" Margin="3,6,3,0"></Label>
+                                             <Label x:Name="ratinglbl" Grid.Row="0" Grid.Column="1"  VerticalOptions="Center"  BackgroundColor= "#00ffffff" FontSize="16" TextColor="#F94848" FontAttributes="Bold"  Text="{Binding rating}"></Label>
+                                             <Image x:Name="img" Grid.Row="0" Grid.Column="2"  VerticalOptions="Center" BackgroundColor= "#00ffffff" Source="Frustated.png" HeightRequest="20" WidthRequest="20"></Image>
+                                             <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" VerticalOptions="Center" HeightRequest="0.6" BackgroundColor= "#959595" Margin="3,0,3,0"></Label>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </BindableLayout.ItemTemplate>
+                                </StackLayout>-->
+                                <Label Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" VerticalOptions="Center" HeightRequest="0.6" BackgroundColor= "#959595" Margin="3,0,3,0"></Label>
+                                <Label Grid.Row="7" Grid.Column="0"  Grid.ColumnSpan="3" Text="Comment: Test " FontSize="18" Margin="5,-12,5,0" FontAttributes="Bold" TextColor="#000000" VerticalOptions="Center" VerticalTextAlignment="Center" HeightRequest="22"></Label>
+                      </Grid> </Frame> </DataTemplate>
+               </BindableLayout.ItemTemplate>
+             </CollectionView>
+         </ScrollView>
+        
+    </StackLayout>
+ 
+</ContentPage>
+

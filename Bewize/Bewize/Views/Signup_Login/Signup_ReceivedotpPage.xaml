@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Bewize.Views.Signup_Login.Signup_ReceivedotpPage"
+    xmlns:VM="clr-namespace:Bewize.ViewModels" BackgroundColor="White"
+    xmlns:local="clr-namespace:Bewize.RenderFiles" NavigationPage.HasNavigationBar="False"  
+     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:behave="clr-namespace:Bewize.Behaviour" ios:Page.UseSafeArea="True">
+
+     <ContentPage.Resources>
+        <ResourceDictionary>
+            <VM:Signup_ReceivedotpVM x:Key="VM"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout Padding="12,10,12,15" >
+        <Grid  Padding="8,0,10,15">
+            <Grid.RowDefinitions>
+                   <RowDefinition Height="40" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+              <Label Text="Select a sign up method" 
+               Grid.Row="0" Grid.Column="1" VerticalTextAlignment="Center" HorizontalOptions="Center"
+               TextColor="#000000" FontFamily="Source Sans Pro" FontSize="25" FontAttributes="Bold" />
+
+             <Button x:Name="Backbtn" Grid.Row="0" Grid.Column="0" ImageSource="Backbtn.jpg" HeightRequest="40" WidthRequest="40" Margin="10" 
+                     Command="{Binding Source={StaticResource VM},Path=backbtn_cmd}"/>
+       
+        </Grid>
+         <Label Margin="25,30,22,10"  Text="Enter OTP" HorizontalOptions="Start" FontSize="18"  TextColor="#4D4D4D" FontFamily="Source Sans Pro" HorizontalTextAlignment="Center" />
+         <Grid  Margin="22,5,22,20" HorizontalOptions="Center" VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                   <RowDefinition Height="0" />
+                   <RowDefinition Height="55"/>
+                   <RowDefinition Height="0.8" />
+                   <RowDefinition Height="20" />
+                   <RowDefinition Height="*" />
+                    <RowDefinition Height="2" />
+                   <RowDefinition Height="45" />
+                     <RowDefinition Height="40" />
+                    <RowDefinition Height="45" />
+                   <RowDefinition Height="*" />
+                   <RowDefinition Height="55"/>
+                   <RowDefinition Height="2"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="45" />
+                <ColumnDefinition Width="8" />
+                 <ColumnDefinition Width="45" />
+                <ColumnDefinition Width="8" />
+                 <ColumnDefinition Width="45" />
+                <ColumnDefinition Width="8" />
+                 <ColumnDefinition Width="45" />
+                <ColumnDefinition Width="8" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            
+               <local:CustomEntry x:Name="Firsttxt" Grid.Row="1" Grid.Column="0" BackgroundColor="#00FFFFFF"  TextColor="Black"
+               FontFamily="Source Sans Pro" Margin="0.2" Text="{Binding FirstChar, Mode=TwoWay}"
+                 FontSize="28" Keyboard="Default" PlaceholderColor="#80393939" Placeholder="0" HorizontalTextAlignment="Center"/>
+               <Label Grid.Row="2" Grid.Column="0" BackgroundColor="#4D4D4D" HeightRequest="0.8"> </Label>
+
+              <local:CustomEntry x:Name="Secondtxt" Grid.Row="1" Grid.Column="2" BackgroundColor="#00FFFFFF" TextColor="Black" 
+               FontFamily="Source Sans Pro" Margin="0.2" Text="{Binding Secondchar, Mode=TwoWay}"
+                 FontSize="28" Keyboard="Default" PlaceholderColor="#80393939" Placeholder="0" HorizontalTextAlignment="Center" />
+               <Label Grid.Row="2" Grid.Column="2" BackgroundColor="#4D4D4D" HeightRequest="0.8"> </Label>
+
+              <local:CustomEntry x:Name="Thirdtxt" Grid.Row="1" Grid.Column="4" BackgroundColor="#00FFFFFF" TextColor="Black" 
+               FontFamily="Source Sans Pro" Margin="0.2" Text="{Binding Thirdchar, Mode=TwoWay}"
+                  FontSize="28" Keyboard="Default" PlaceholderColor="#80393939" Placeholder="0" HorizontalTextAlignment="Center" />
+               <Label Grid.Row="2" Grid.Column="4" BackgroundColor="#4D4D4D" HeightRequest="0.8"> </Label>
+          
+               <local:CustomEntry x:Name="Fourthtxt" Grid.Row="1" Grid.Column="6"  BackgroundColor="#00FFFFFF" TextColor="Black" 
+               FontFamily="Source Sans Pro" Text="{Binding Fourthchar, Mode=TwoWay}"
+                 FontSize="28" Keyboard="Default" PlaceholderColor="#80393939" Placeholder="0" HorizontalTextAlignment="Center" />
+               <Label Grid.Row="2" Grid.Column="6" BackgroundColor="#4D4D4D" HeightRequest="0.8"> </Label>
+
+               <Label Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="9"></Label>
+               <Label Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="9"  TextColor="#4D4D4D" FontSize="16"
+                      Text="Enter the OTP you have received on your number you mentioned for sign up"></Label>
+               <Label Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="9"></Label>
+               <Label Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="9" TextColor="#000000" HorizontalTextAlignment="Center" FontSize="35" Text="2:12" FontAttributes="Bold"></Label>
+               <Label Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="9"  TextColor="#4D4D4D" FontSize="14" HorizontalTextAlignment="Center"
+                     Margin="10,0,10,0"  Text="If you not receive OTP before the timer try clicking send again button below."></Label>
+               <Button x:Name="Retrybtn" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="9"  WidthRequest="120" VerticalOptions="Center" HorizontalOptions="Center" FontSize="15" Text="Retry" TextColor="#ffffff" BorderWidth="1" BorderColor="#ffffff"
+                HeightRequest="40"  CornerRadius="20"  BackgroundColor="#C9C9C9" FontFamily="Source Sans Pro"  />
+               <Label Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="9"></Label>
+               <Button x:Name="Continuebtn" Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="9" Margin="4,2,4,2" VerticalOptions="End" FontSize="16" Text="Continue" TextColor="#ffffff" BorderWidth="1" BorderColor="#ffffff"
+                HeightRequest="55"  CornerRadius="24"  BackgroundColor="#0066FF" FontFamily="Source Sans Pro" Clicked="Continuebtn_Clicked_1" />
+               <Label Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="7"></Label>
+
+        </Grid>
+         
+
+       
+   
+    </StackLayout>
+</ContentPage>
+

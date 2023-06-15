@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Bewize.Views.Home.WelcomePage_" BackgroundColor="White"
+    xmlns:VM="clr-namespace:Bewize.ViewModels" xmlns:local="clr-namespace:Bewize.RenderFiles" NavigationPage.HasNavigationBar="False"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:bhv="clr-namespace:Bewize.Behaviour" ios:Page.UseSafeArea="True">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <VM:WelcomepageVM x:Key="VM"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout  HorizontalOptions="Center" Padding="15,15,15,0" >
+        <Grid VerticalOptions="Center" Padding="5,0,15,10">
+            <Grid.RowDefinitions>
+                   <RowDefinition Height="45" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+              <Label Text="Welcome!" 
+               Grid.Row="0" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center"
+               TextColor="#000000" FontFamily="Source Sans Pro" FontSize="28" FontAttributes="Bold" />
+
+             <!--<Button x:Name="Backbtn" Grid.Row="0" Grid.Column="0" ImageSource="Backbtn.jpg" HeightRequest="40" WidthRequest="40" Margin="10" 
+                     Command="{Binding Source={StaticResource VM},Path=welcomebackbtn_cmd}"/>-->
+       
+        </Grid>
+         <Label Text="What’s your home zip code?" VerticalTextAlignment="Center" HorizontalOptions="Start"
+                   TextColor="#000000" FontFamily="Source Sans Pro" FontSize="28" FontAttributes="Bold" Padding="15,40,10,12" />
+         <Label Padding="15,0,10,35" Text="Tell us the zip code of your residence"
+                 HorizontalOptions="Start" FontSize="18"  TextColor="#4D4D4D" FontFamily="Source Sans Pro" HorizontalTextAlignment="Center" />
+         <Label Text="ZIP CODE" Margin="18,0,12,0"
+              VerticalTextAlignment="Center"
+               TextColor="#2B92FC" FontFamily="Source Sans Pro" FontAttributes="Bold" FontSize="16" HeightRequest="20" />
+         
+           <local:CustomEntry Margin="23,20,23,0" BackgroundColor="#00FFFFFF"  
+               FontFamily="Source Sans Pro" MaxLength="6" x:Name="Zipcodetxt"
+                 FontSize="18" Keyboard="Numeric" PlaceholderColor="#80393939" Placeholder="000000">
+               <!--<local:CustomEntry.Behaviors>
+                     <bhv:NumberValidationBehavior/>
+               </local:CustomEntry.Behaviors>-->
+           </local:CustomEntry>
+          <Label Margin="23,0,23,0" BackgroundColor="#4D4D4D" HeightRequest="0.8"> </Label>
+          
+         <Grid  HorizontalOptions="Center"  VerticalOptions="EndAndExpand" Padding="1">
+            <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="55" />
+                    <RowDefinition Height="4" />
+                    <RowDefinition Height="55" />
+                    <RowDefinition Height="8" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0"></Label>
+            <Button x:Name="Currentlocationbtn" Margin="12,0,12,0" FontSize="16" Text="Use my current location" TextColor="#2B92FC" BorderWidth="1" BorderColor="#2B92FC"
+                HeightRequest="52"   Grid.Row="1" Grid.Column="0" CornerRadius="24"  BackgroundColor="#ffffff" FontFamily="Source Sans Pro"
+                 Command="{Binding Source={StaticResource VM},Path=Currentlocationbtncmd}"/>
+            <Label Grid.Row="2" Grid.Column="0"></Label>
+            <Button x:Name="Continuebtn" Margin="12,0,12,0" FontSize="16" Text="Continue" TextColor="#ffffff" BorderWidth="1" BorderColor="#ffffff"
+                HeightRequest="52"   Grid.Row="3" Grid.Column="0" CornerRadius="24"  BackgroundColor="#2B92FC" FontFamily="Source Sans Pro"
+                  Clicked="Currentlocationbtn_Clicked" />
+           <Label Grid.Row="4" Grid.Column="0"></Label>
+        </Grid>
+        <Label HeightRequest="12"></Label>
+    </StackLayout>
+</ContentPage>
+

@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Bewize.Views.PwdVerificationPage" BackgroundColor="White"
+    xmlns:VM="clr-namespace:Bewize.ViewModels" xmlns:local="clr-namespace:Bewize.RenderFiles" NavigationPage.HasNavigationBar="False"
+     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:behave="clr-namespace:Bewize.Behaviour" ios:Page.UseSafeArea="True">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <VM:PwdVerificationVM x:Key="VM"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+  <ScrollView >
+    <StackLayout  HorizontalOptions="Center" VerticalOptions="StartAndExpand" Margin="10,10,10,0">
+        <Grid VerticalOptions="Center" Padding="8,15,10,15">
+            <Grid.RowDefinitions>
+                   <RowDefinition Height="40" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+              <Label Text="Verification" 
+               Grid.Row="0" Grid.Column="1" VerticalTextAlignment="Center" HorizontalOptions="Center"
+               TextColor="#000000" FontFamily="Source Sans Pro" FontSize="26" FontAttributes="Bold" />
+
+              <Button x:Name="Backbtn" Grid.Row="0" Grid.Column="0" ImageSource="Backbtn.jpg" HeightRequest="40" WidthRequest="40" Margin="10" 
+                         Command="{Binding Source={StaticResource VM},Path=pwdbackbtn_command}"/>
+       
+        </Grid>
+          <Label Padding="30,0,30,40" Text=" Enter your mobile number to enable 2 - step verification"
+                 HorizontalOptions="Center" FontSize="20"  TextColor="#4D4D4D" FontFamily="Source Sans Pro" HorizontalTextAlignment="Center" />
+          <Label Text="Enter your mobile number" VerticalTextAlignment="Center" HorizontalOptions="Start"
+                   TextColor="#000000" FontFamily="Source Sans Pro" FontSize="26" FontAttributes="Bold" Padding="20,12,0,22" />
+          <Label Text="Mobile no" Margin="22,5,22,2"
+              VerticalTextAlignment="Center"
+               TextColor="#000000" FontFamily="Source Sans Pro" FontSize="Subtitle" HeightRequest="20" />
+            <Grid Margin="1" Padding="20,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="0.8"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="65"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+            <Image Grid.Column="0"    Margin="2,20,0,0" Grid.Row="0" Source="{Binding selectedCountry.flag ,Mode=TwoWay}"/>
+            <local:CustomEntry x:Name="countrycodetxt" Margin="2,20,0,0" BackgroundColor="#00FFFFFF"  Text="{Binding selectedCountry.country_code ,Mode=TwoWay}"
+               FontFamily="Source Sans Pro" Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Start"
+                 FontSize="16" PlaceholderColor="#80393939" Placeholder="+ 91" Focused="CustomEntry_Focused"/>
+            <local:CustomEntry x:Name="numbertxt" Margin="12,20,23,0" BackgroundColor="#00FFFFFF"  
+               FontFamily="Source Sans Pro" Grid.Row="0" Grid.Column="2" MaxLength="10"
+                 FontSize="16" Keyboard="Numeric" PlaceholderColor="#80393939" Placeholder="Enter your mobile number">
+                 <!--<local:CustomEntry.Behaviors>
+                       <behave:NumberValidationBehavior/>
+                </local:CustomEntry.Behaviors>-->
+            </local:CustomEntry>
+                  <Label Margin="2,0,22,0" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#4D4D4D" HeightRequest="0.8"> </Label>
+                  <Label Margin="8,0,23,0" Grid.Row="1" Grid.Column="2" BackgroundColor="#4D4D4D" HeightRequest="0.8"> </Label>
+            </Grid>
+          <Button x:Name="Continuebtn" Margin="15,45,15,10" FontSize="18" Text="Continue" TextColor="#ffffff" BorderWidth="1"
+                  HeightRequest="48" BorderColor="#ffffffff" CornerRadius="24"  BackgroundColor="#0066FF" FontFamily="Source Sans Pro"
+                    Clicked="Continuebtn_Clicked" FontAttributes="Bold"/>
+          
+    </StackLayout>
+  </ScrollView>
+    
+</ContentPage>
+

@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Bewize.Views.OtpVerificationPage" BackgroundColor="White"
+    xmlns:VM="clr-namespace:Bewize.ViewModels" xmlns:local="clr-namespace:Bewize.RenderFiles" NavigationPage.HasNavigationBar="False"
+     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="True">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <VM:OtpverificationVM x:Key="VM"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+  <ScrollView >
+    <StackLayout  HorizontalOptions="Center" VerticalOptions="StartAndExpand" Margin="10,10,10,0">
+        <Grid VerticalOptions="Center" Padding="8,15,10,15">
+            <Grid.RowDefinitions>
+                   <RowDefinition Height="40" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+              <Label Text="Verification" 
+               Grid.Row="0" Grid.Column="1" VerticalTextAlignment="Center" HorizontalOptions="Center"
+               TextColor="#000000" FontFamily="Source Sans Pro" FontSize="26" FontAttributes="Bold" />
+
+              <Button x:Name="Backbtn" Grid.Row="0" Grid.Column="0" ImageSource="Backbtn.jpg" HeightRequest="40"
+                      WidthRequest="40" Margin="10" Command="{Binding Source={StaticResource VM},Path=otpbackbtn_command}"/>
+       
+        </Grid>
+          <Label Padding="30,0,30,40" Text="We have sent you a code to verify your mobile number."
+                 HorizontalOptions="Center" FontSize="20"  TextColor="#4D4D4D" FontFamily="Source Sans Pro" HorizontalTextAlignment="Center" />
+          <Label Text="Enter your OTP code here" VerticalTextAlignment="Center" HorizontalOptions="Start"
+                   TextColor="#000000" FontFamily="Source Sans Pro" FontSize="26" FontAttributes="Bold" Padding="25,12,20,0" />
+            
+           <Grid VerticalOptions="End" Padding="25,0,25,0" HorizontalOptions="Center">
+            <Grid.RowDefinitions >
+                    <RowDefinition  Height="5"/>
+                    <RowDefinition Height="55" />
+                    <RowDefinition Height="0.8" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition  />
+               <ColumnDefinition  />
+               <ColumnDefinition />
+               <ColumnDefinition  />
+             </Grid.ColumnDefinitions>
+
+             <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" ></Label>
+             <local:CustomEntry x:Name="firstotptxt"  ReturnType="Done" TextColor="#000000" FontFamily="Source Sans Pro"  Grid.Row="1" Grid.Column="0"
+              Keyboard="Numeric" PlaceholderColor="#80393939" Placeholder="0" FontAttributes="Bold" FontSize="30"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center" IsReadOnly="True" MaxLength="1" Text="{Binding FirstChar}"/>
+             <Label Margin="5,0,5,0"  BackgroundColor="#4D4D4D" HeightRequest="0.8" Grid.Row="2" Grid.Column="0"> </Label>
+             <local:CustomEntry  x:Name="secondotptxt" ReturnType="Done" TextColor="#000000"  FontAttributes="Bold" VerticalOptions="Center" FontFamily="Source Sans Pro" IsReadOnly="True" Grid.Row="1" Grid.Column="1"
+              Keyboard="Numeric" PlaceholderColor="#80393939" Placeholder="0"  MaxLength="1" FontSize="30" HorizontalTextAlignment="Center" Text="{Binding Secondchar}"/>
+             <Label Margin="5,0,5,0" BackgroundColor="#4D4D4D" HeightRequest="0.8" Grid.Row="2" Grid.Column="1"> </Label>
+             <local:CustomEntry  x:Name="thirdotptxt" ReturnType="Done" FontAttributes="Bold" TextColor="#000000" VerticalOptions="Center" FontFamily="Source Sans Pro" IsReadOnly="True" Grid.Row="1" Grid.Column="2"
+              Keyboard="Numeric" PlaceholderColor="#80393939" Placeholder="0" MaxLength="1" FontSize="30" HorizontalTextAlignment="Center" Text="{Binding Thirdchar}"/>
+             <Label Margin="5,0,5,0" BackgroundColor="#4D4D4D" HeightRequest="0.8" Grid.Row="2" Grid.Column="2"> </Label>
+             <local:CustomEntry  x:Name="fourthotptxt" ReturnType="Done" FontAttributes="Bold" TextColor="#000000"  VerticalOptions="Center" FontFamily="Source Sans Pro" IsReadOnly="True" Grid.Row="1" Grid.Column="3"
+              Keyboard="Numeric"  PlaceholderColor="#80393939" Placeholder="0" MaxLength="1" FontSize="30" HorizontalTextAlignment="Center" Text="{Binding Fourthchar}"/>
+             <Label Margin="5,0,5,0" BackgroundColor="#4D4D4D" HeightRequest="0.8" Grid.Row="2" Grid.Column="3"> </Label>
+
+            </Grid>
+         <Button x:Name="continuebtn" Margin="15,45,15,10" FontSize="18" Text="Continue" TextColor="#ffffff" BorderWidth="1" BorderColor="#ffffff" HeightRequest="48" CornerRadius="24"
+                 BackgroundColor="#0066FF" FontFamily="Source Sans Pro"
+                 Clicked="continuebtn_Clicked" FontAttributes="Bold" />
+                 
+    </StackLayout>
+  </ScrollView>
+    
+</ContentPage>
+

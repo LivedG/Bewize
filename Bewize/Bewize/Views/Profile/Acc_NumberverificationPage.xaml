@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Bewize.Views.Profile.Acc_NumberverificationPage" BackgroundColor="White"
+    xmlns:VM="clr-namespace:Bewize.ViewModels" xmlns:local="clr-namespace:Bewize.RenderFiles" NavigationPage.HasNavigationBar="False"
+   xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="True">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <VM:Acc_NumberverificationpgVM x:Key="VM"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+  
+    <StackLayout  HorizontalOptions="Center" VerticalOptions="StartAndExpand" Margin="10,10,10,0">
+        <Grid VerticalOptions="Center" Padding="8,15,10,15">
+            <Grid.RowDefinitions>
+                   <RowDefinition Height="40" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+              <Label Text="Verification" 
+               Grid.Row="0" Grid.Column="1" VerticalTextAlignment="Center" HorizontalOptions="Center"
+               TextColor="#000000" FontFamily="Source Sans Pro" FontSize="26" FontAttributes="Bold" />
+
+              <Button x:Name="Backbtn" Grid.Row="0" Grid.Column="0" ImageSource="Backbtn.jpg" HeightRequest="40" WidthRequest="40" Margin="10" 
+                         Command="{Binding Source={StaticResource VM},Path=accbackbtn_Command}"/>
+       
+        </Grid>
+          <Label Padding="30,0,30,30" Text=" Enter your mobile number to enable 2 - step verification"
+                 HorizontalOptions="Center" FontSize="20"  TextColor="#4D4D4D" FontFamily="Source Sans Pro" HorizontalTextAlignment="Center" />
+         <ContentView BackgroundColor="#00ffffff" HorizontalOptions="FillAndExpand" >
+            <Frame IsClippedToBounds="True" Margin="15" CornerRadius="25" HasShadow="True" BorderColor="#ffffff">
+                <StackLayout BackgroundColor="#0fffffff" > 
+                   <Label Text="Enter your mobile number" VerticalTextAlignment="Center" HorizontalOptions="Center"
+                           TextColor="#000000" FontFamily="Source Sans Pro" FontSize="22" FontAttributes="Bold" Padding="20,12,0,22" />
+
+          <Grid Margin="2,5,2,10" HorizontalOptions="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="0.8"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+            <Image Grid.Column="0"    Margin="2,0,0,0" Grid.Row="0" Source="{Binding selectedCountry.flag ,Mode=TwoWay}"/>
+            <local:CustomEntry x:Name="Countrycodetxt" Margin="2,0,0,0" BackgroundColor="#00FFFFFF"   Text="{Binding selectedCountry.country_code, Mode=TwoWay}"
+               FontFamily="Source Sans Pro" Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Start" 
+                 FontSize="16"  PlaceholderColor="#80393939" Placeholder="+ 91" MaxLength="4" Focused="Countrycodetxt_Focused" />
+            <local:CustomEntry x:Name="pnumbertxt" Margin="0,0,0,0" BackgroundColor="#00FFFFFF"   Text="{Binding Phonenumber, Mode=TwoWay}"
+               FontFamily="Source Sans Pro" Grid.Row="0" Grid.Column="2" MaxLength="10" PlaceholderColor="#80393939"
+               FontSize="16" Keyboard="Numeric"  Placeholder="Enter your mobile number">
+            </local:CustomEntry>
+            <Label Margin="2,0,22,0" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#4D4D4D" HeightRequest="0.8"> </Label>
+            <Label Margin="8,0,23,0" Grid.Row="1" Grid.Column="2" BackgroundColor="#4D4D4D" HeightRequest="0.8"> </Label>
+              
+          </Grid>
+                    <Button x:Name="Continuebtn" Margin="15,40,15,10" FontSize="18" Text="Continue" TextColor="#ffffff" BorderWidth="1"
+                          HeightRequest="48" BorderColor="#ffffffff" CornerRadius="24"  BackgroundColor="#0066FF" FontFamily="Source Sans Pro"
+                          Clicked="Continuebtn_Clicked"/>
+                </StackLayout>
+            </Frame>
+
+        </ContentView>
+            
+   </StackLayout>
+
+</ContentPage>
+

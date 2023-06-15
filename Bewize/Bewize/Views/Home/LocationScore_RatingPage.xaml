@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    x:Class="Bewize.Views.Home.LocationScore_RatingPage"
+     xmlns:local="clr-namespace:Bewize.Models"   xmlns:VM="clr-namespace:Bewize.ViewModels"
+    BackgroundColor="#ffffff"
+    NavigationPage.HasNavigationBar="False"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea="True">
+   <ContentPage.Resources>
+        <ResourceDictionary>
+            <VM:LocationScore_RatingVM x:Key="VM"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+   <ScrollView>
+      
+      <StackLayout Padding="10,0,10,0" IsClippedToBounds="True" HorizontalOptions="Center"  VerticalOptions="Fill">
+          <Grid VerticalOptions="Center" Padding="8,15,15,6">
+            <Grid.RowDefinitions>
+                   <RowDefinition Height="40" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+              <Label 
+               Grid.Row="0" Grid.Column="1" VerticalTextAlignment="Center"  HorizontalTextAlignment="Center"
+               TextColor="#000000" FontFamily="Source Sans Pro" FontSize="26" FontAttributes="Bold" />
+
+              <Button x:Name="Backbtn" Grid.Row="0" Grid.Column="0" ImageSource="Backbtn.jpg" HeightRequest="40" WidthRequest="40" Margin="10" 
+                    Command="{Binding Source={StaticResource VM},Path=backcmd}" />
+       
+        </Grid>
+          <StackLayout>
+            <Frame Margin="18,5,18,10" BorderColor="#E2E2E2" BackgroundColor="#ffffff" HasShadow="True" IsClippedToBounds="True" CornerRadius="25">
+                <Grid>
+                    <Grid.RowDefinitions>
+                         <RowDefinition Height="200"/>
+                         <RowDefinition Height="50"/>
+                         <RowDefinition Height="25"/>
+                         <RowDefinition Height="20"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                         <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                         <Label x:Name="Placelbl" Grid.Row="1" Margin="12,12,12,2" VerticalTextAlignment="Center" Grid.Column="0" Text="AB Road" FontFamily="Source Sans Pro" TextColor="#000000"  FontAttributes="Bold" FontSize="22"/>
+                         <Label x:Name="Placeaddresslbl" Grid.Row="2" Margin="12,2,12,2" VerticalTextAlignment="Center" Grid.Column="0"  Text="AB Road, Indore, MP" FontFamily="Source Sans Pro" TextColor="#000000"  FontSize="18"/>
+                         <Label x:Name="Posttiminglbl" Grid.Row="3" Margin="12,0,12,0" VerticalTextAlignment="Center" Grid.Column="0"  Text="Posted 6 seconds ago, Updated 6 seconds ago" FontFamily="Source Sans Pro" TextColor="#959595"  FontSize="14"/>
+                    </Grid>
+            </Frame>
+          </StackLayout>
+
+           <Frame Margin="25,20,25,8" BackgroundColor="#80EBEBEB" CornerRadius="20" HeightRequest="10"  HasShadow="False" VerticalOptions="Center">
+             <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/><ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="Scorebtn" Grid.Row="0" Grid.Column="0" Text="Safety Score" BackgroundColor="#ffffff" Margin="-18,-18,-22,-18"  CornerRadius="21" FontSize="15" Clicked="Scorebtn_Clicked" TextColor="DarkGray" FontAttributes="Bold" ></Button>
+                <Button x:Name="Ratingbtn" Grid.Row="0" Grid.Column="1" Text="User Rating" Margin="-22,-18,-18,-18" CornerRadius="21" FontSize="15" Clicked="Ratingbtn_Clicked" TextColor="#80000000" FontAttributes="Bold" ></Button>
+             </Grid>
+           </Frame>
+
+           <StackLayout x:Name="ScoreView" Margin="25" > 
+            <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10"/>
+                <RowDefinition Height="20"/>
+            </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                   <ColumnDefinition Width="*"/>
+                   <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Frame  HasShadow="False" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                       CornerRadius="4"
+                       HeightRequest="8">
+                    <Frame.Background>
+                        <LinearGradientBrush EndPoint="0,1" >
+                            <GradientStop Color="#FF4862"
+                                          Offset="0.8" />
+                            <GradientStop Color="#FF916E"
+                                          Offset="0.8" />
+                             <GradientStop Color="#FFDC64"
+                                          Offset="0.8" />
+                             <GradientStop Color="#13DC7F"
+                                          Offset="0.8" />
+                        </LinearGradientBrush>
+                    </Frame.Background>
+            </Frame>
+             <Label FontSize="12" TextColor="#959595" Text="Dangerous" Grid.Row="1" Grid.Column="0"  HorizontalTextAlignment="Start"> </Label>
+       
+            <Label FontSize="12" TextColor="#959595" Text="Safe" Grid.Row="1" Grid.Column="1" HorizontalTextAlignment="End"> </Label>
+           </Grid>
+
+            <Label Text="Based on our safe algorithim, this location is somewhat safe" FontSize="14" TextColor="#4D4D4D"/>
+            
+                      <Frame Margin="8,12,8,10" BorderColor="#E2E2E2" BackgroundColor="#ffffff" HasShadow="True" IsClippedToBounds="True" CornerRadius="25" > 
+                         <Grid>
+                           <Grid.RowDefinitions>
+                                      <RowDefinition Height="35"/>
+                                      <RowDefinition Height="20"/>
+                                      <RowDefinition Height="18"/>
+                                      <RowDefinition Height="45"/>
+                                      <RowDefinition Height="0.8"/>
+                                      <RowDefinition Height="75"/>
+                                      <RowDefinition Height="35"/>
+                                      <RowDefinition Height="0.8"/>
+                                      <RowDefinition Height="35"/>
+                                      <RowDefinition Height="0.8"/>
+                                      <RowDefinition Height="35"/>
+                                      <RowDefinition Height="0.8"/>
+                                      <RowDefinition Height="35"/>
+                                      <RowDefinition Height="0.8"/>
+                               </Grid.RowDefinitions>
+                           <Grid.ColumnDefinitions>
+                               <ColumnDefinition Width="*"/>
+                               <ColumnDefinition Width="30"/>
+                               <ColumnDefinition Width="30"/>
+                           </Grid.ColumnDefinitions>
+                               <Label  Grid.Row="0" VerticalTextAlignment="Center" Grid.Column="0" Grid.ColumnSpan="2" Text="Overall Community Score" FontFamily="Source Sans Pro" TextColor="DarkSlateGray"  FontSize="13" HorizontalTextAlignment="Start"/>
+                               <Image  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Source="FiveStarBar.png" Aspect="AspectFit" ></Image>
+                               <Label  Grid.Row="1" VerticalTextAlignment="Center" Grid.Column="0" Grid.ColumnSpan="2" Text="Felt Very Safe" FontFamily="Source Sans Pro" TextColor="#0066FF"  FontSize="18" FontAttributes="Bold" />
+                               <Label  Grid.Row="2" VerticalTextAlignment="Center" Grid.Column="0" Grid.ColumnSpan="2"  Text="1 Total Ratings" FontFamily="Source Sans Pro" TextColor="#959595"  FontSize="12"/>
+                               <Label  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"  VerticalOptions="Center"   HorizontalOptions="Start" FontSize="14"  Text="BeWize members specified that they felt very safe in this area"
+                                       TextColor="#4D4D4d" BackgroundColor="#00ffffff"  ></Label>
+                                <Label  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" VerticalOptions="Center" HeightRequest="0.6" BackgroundColor= "#959595"></Label>
+                                <Button Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3"  Margin="10" CornerRadius="15" TextColor="#000000" FontSize="16" Text="Overall Safety Rating: 3.0" BackgroundColor="#FFC700"></Button>
+                                <Label x:Name="cleannesslbl" Grid.Row="6" Grid.Column="0" TextColor="#4D4D4D" Text="Upkeep and Cleanliness" FontSize="18" Margin="3,6,3,0"></Label>
+                                <Label x:Name="cleannessRatelbl" Grid.Row="6" Grid.Column="1"  VerticalOptions="Center"  BackgroundColor= "#00ffffff" FontSize="18" TextColor="#FFC700" Text="3"></Label>
+                                <Image x:Name="CleannessStarimg" Grid.Row="6" Grid.Column="2"  VerticalOptions="Center" BackgroundColor= "#00ffffff" Source="ThirdStar.png"></Image>
+                                <Label Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3"  VerticalOptions="Center" HeightRequest="0.6" BackgroundColor= "#959595" Margin="3,0,3,0"></Label>
+                                <Label x:Name="Visiblelbl" Grid.Row="8" Grid.Column="0" TextColor="#4D4D4D" Text="Lighting and Visibility" FontSize="18" Margin="2,6,2,0"></Label>
+                                <Label x:Name="VisiblityRatelbl" Grid.Row="8" Grid.Column="1"  VerticalOptions="Center"  BackgroundColor= "#00ffffff" FontSize="18" TextColor="#FFC700" Text="3"></Label>
+                                <Image x:Name="Visibilitystarimg" Grid.Row="8" Grid.Column="2"  VerticalOptions="Center" BackgroundColor= "#00ffffff" Source="ThirdStar.png"></Image>
+                                <Label Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="3" VerticalOptions="Center" HeightRequest="0.6" BackgroundColor= "#959595" Margin="3,0,3,0"></Label>
+                                <Label x:Name="Activitylbl" Grid.Row="10" Grid.Column="0" TextColor="#4D4D4D" Text="No Suspicious Activity" FontSize="18" Margin="2,6,2,0"></Label>
+                                <Label Grid.Row="10" Grid.Column="1"  VerticalOptions="Center"  BackgroundColor= "#00ffffff" FontSize="18" TextColor="#8FCB3C" Text="4"></Label>
+                                <Image Grid.Row="10" Grid.Column="2"  VerticalOptions="Center" BackgroundColor= "#00ffffff" Source="FourStar.png"></Image>
+                                <Label Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="3" VerticalOptions="Center" HeightRequest="0.6" BackgroundColor= "#959595" Margin="3,0,3,0"></Label>
+                                <Label Grid.Row="12" Grid.Column="0" TextColor="#4D4D4D" Text="No Vagrancy or Loitering" FontSize="18" Margin="2,6,2,0"></Label>
+                                <Label Grid.Row="12" Grid.Column="1"  VerticalOptions="Center"  BackgroundColor= "#00ffffff" FontSize="18" TextColor="#8FCB3C" Text="4"></Label>
+                                <Image Grid.Row="12" Grid.Column="2"  VerticalOptions="Center" BackgroundColor= "#00ffffff" Source="FourStar.png"></Image>
+                                <Label Grid.Row="13" Grid.Column="0" Grid.ColumnSpan="3" VerticalOptions="Center" HeightRequest="0.6" BackgroundColor= "#959595" Margin="3,0,3,0"></Label>
+                      </Grid> </Frame> 
+         
+           </StackLayout>
+       
+
+           <StackLayout x:Name="RatingView" Margin="15"> 
+            <Grid Margin="10">
+            <Grid.RowDefinitions>
+               <RowDefinition Height="22"></RowDefinition>
+                  <RowDefinition Height="28"></RowDefinition> <RowDefinition Height="16"></RowDefinition>
+            </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*" />
+                  <ColumnDefinition Width="*" />
+                 <ColumnDefinition Width="105" />
+                </Grid.ColumnDefinitions>
+              <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Overall Community Score" FontSize="14" TextColor="#4D4D4D"/>
+              <Label Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" HorizontalTextAlignment="End" Text="5" FontSize="22" FontAttributes="Bold" VerticalTextAlignment="Center" TextColor="#0066FF" />
+                 
+              <Label Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2" Text="Felt Very Safe" FontSize="20" FontAttributes="Bold" TextColor="#0066FF"/>
+              <Image x:Name="starimg" Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Source="FiveStarBar.png" Aspect="AspectFit" VerticalOptions="Center" ></Image>
+              <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Text="1 Total Ratings" FontSize="14" TextColor="#959595"/>
+              
+           </Grid>
+            <Frame Margin="10,12,10,10" BorderColor="#E2E2E2" BackgroundColor="#ffffff" HasShadow="True" IsClippedToBounds="True" CornerRadius="25" > 
+                         <Grid Margin="5">
+                           <Grid.RowDefinitions>
+                                      <RowDefinition Height="45"/>
+                                      <RowDefinition Height="21"/>
+                                      <RowDefinition Height="1"/>
+                                      <RowDefinition Height="75"/>
+                                      <RowDefinition Height="35"/>
+                                      <RowDefinition Height="0.8"/>
+                                      <RowDefinition Height="35"/>
+                                      <RowDefinition Height="0.8"/>
+                                      <RowDefinition Height="35"/>
+                                      <RowDefinition Height="0.8"/>
+                                      <RowDefinition Height="35"/>
+                                      <RowDefinition Height="0.8"/>
+                               </Grid.RowDefinitions>
+                           <Grid.ColumnDefinitions>
+                               <ColumnDefinition Width="*"/>
+                               <ColumnDefinition Width="30"/>
+                               <ColumnDefinition Width="30"/>
+                           </Grid.ColumnDefinitions>
+                               <Label  Grid.Row="0" VerticalTextAlignment="Center" Grid.Column="0" Grid.ColumnSpan="2" Text="User Rating" FontFamily="Source Sans Pro" TextColor="#0066FF"  FontSize="14" HorizontalTextAlignment="Start"/>
+                               <Button  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="Sort" FontSize="16" FontAttributes="Bold"  ></Button>
+                               <Label  Grid.Row="1" VerticalTextAlignment="Center" Grid.Column="0" Grid.ColumnSpan="2" Text="River rat" FontFamily="Source Sans Pro" TextColor="#000000" FontAttributes="Bold"  FontSize="18"/>
+                               <Label  Grid.Row="1" VerticalTextAlignment="Center" Grid.Column="1" Grid.ColumnSpan="2"  Text="Posted 9 months ago" FontFamily="Source Sans Pro" TextColor="#959595"  FontSize="12" HorizontalTextAlignment="Start"/>
+                               <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3"  Margin="10" CornerRadius="15" TextColor="#000000" FontSize="16" Text="Overall Safety Rating: 3.0" BackgroundColor="#FFC700"></Button>
+                                <Label x:Name="cleannesslbl1" Grid.Row="4" Grid.Column="0" TextColor="#4D4D4D" Text="Upkeep and Cleanliness" FontSize="18" Margin="3,6,3,0"></Label>
+                                <Label x:Name="cleannessRatelbl1" Grid.Row="4" Grid.Column="1"  VerticalOptions="Center"  BackgroundColor= "#00ffffff" FontSize="18" TextColor="#FFC700" Text="3"></Label>
+                                <Image x:Name="CleannessStarimg1" Grid.Row="4" Grid.Column="2"  VerticalOptions="Center" BackgroundColor= "#00ffffff" Source="ThirdStar.png"></Image>
+                                <Label Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3"  VerticalOptions="Center" HeightRequest="0.6" BackgroundColor= "#959595" Margin="3,0,3,0"></Label>
+                                <Label x:Name="Visiblelbl1" Grid.Row="6" Grid.Column="0" TextColor="#4D4D4D" Text="Lighting and Visibility" FontSize="18" Margin="2,6,2,0"></Label>
+                                <Label x:Name="VisiblityRatelbl1" Grid.Row="6" Grid.Column="1"  VerticalOptions="Center"  BackgroundColor= "#00ffffff" FontSize="18" TextColor="#FFC700" Text="3"></Label>
+                                <Image x:Name="Visibilitystarimg1" Grid.Row="6" Grid.Column="2"  VerticalOptions="Center" BackgroundColor= "#00ffffff" Source="ThirdStar.png"></Image>
+                                <Label Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" VerticalOptions="Center" HeightRequest="0.6" BackgroundColor= "#959595" Margin="3,0,3,0"></Label>
+                                <Label x:Name="Activitylbl1" Grid.Row="8" Grid.Column="0" TextColor="#4D4D4D" Text="No Suspicious Activity" FontSize="18" Margin="2,6,2,0"></Label>
+                                <Label Grid.Row="8" Grid.Column="1"  VerticalOptions="Center"  BackgroundColor= "#00ffffff" FontSize="18" TextColor="#8FCB3C" Text="4"></Label>
+                                <Image Grid.Row="8" Grid.Column="2"  VerticalOptions="Center" BackgroundColor= "#00ffffff" Source="FourStar.png"></Image>
+                                <Label Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="3" VerticalOptions="Center" HeightRequest="0.6" BackgroundColor= "#959595" Margin="3,0,3,0"></Label>
+                                <Label Grid.Row="10" Grid.Column="0" TextColor="#4D4D4D" Text="No Vagrancy or Loitering" FontSize="18" Margin="2,6,2,0"></Label>
+                                <Label Grid.Row="10" Grid.Column="1"  VerticalOptions="Center"  BackgroundColor= "#00ffffff" FontSize="18" TextColor="#8FCB3C" Text="4"></Label>
+                                <Image Grid.Row="10" Grid.Column="2"  VerticalOptions="Center" BackgroundColor= "#00ffffff" Source="FourStar.png"></Image>
+                                <Label Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="3" VerticalOptions="Center" HeightRequest="0.6" BackgroundColor= "#959595" Margin="3,0,3,0"></Label>
+                      </Grid> </Frame> 
+              
+          </StackLayout>
+        
+      </StackLayout>
+   </ScrollView>
+</ContentPage>

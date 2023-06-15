@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Bewize.Views.Signup_Login.RegisterwithNo_DonePage"
+    xmlns:VM="clr-namespace:Bewize.ViewModels" BackgroundColor="White"
+    xmlns:local="clr-namespace:Bewize.RenderFiles" NavigationPage.HasNavigationBar="False"  
+     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:behave="clr-namespace:Bewize.Behaviour" ios:Page.UseSafeArea="True">
+
+     <ContentPage.Resources>
+        <ResourceDictionary>
+            <VM:RegisterwithNo_DoneVM x:Key="VM"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout Padding="12,10,12,15" >
+        <!--<Grid  Padding="8,0,10,45">
+            <Grid.RowDefinitions>
+                   <RowDefinition Height="40" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+              <Label Text="Select a sign up method" 
+               Grid.Row="0" Grid.Column="1" VerticalTextAlignment="Center" HorizontalOptions="Center"
+               TextColor="#000000" FontFamily="Source Sans Pro" FontSize="25" FontAttributes="Bold" />
+
+             <Button x:Name="Backbtn" Grid.Row="0" Grid.Column="0" ImageSource="Backbtn.jpg" HeightRequest="40" WidthRequest="40" Margin="10" 
+                     Command="{Binding Source={StaticResource VM},Path=backbtn_cmd}"/>
+       
+        </Grid>-->
+         <Grid Margin="30,100,30,30" HorizontalOptions="Center" VerticalOptions="Center">
+            <Grid.RowDefinitions>
+                   <RowDefinition Height="120" />
+                   <RowDefinition Height="0.8" />
+                   <RowDefinition Height="*" />
+                   <RowDefinition Height="55"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Image Grid.Row="0" Grid.Column="0" Source="check.jpg" HeightRequest="100" WidthRequest="100"  BackgroundColor="White"></Image>
+            <Label Grid.Row="2" Grid.Column="0" Margin="28" Text="You have successfully sign up with your phone number" TextColor="#393939" FontSize="25" FontFamily="Source Sans Pro" HorizontalTextAlignment="Center"  />
+              
+            <Label Grid.Row="3" Grid.Column="0"></Label>
+        </Grid>
+         
+        <Button x:Name="Donebtn"  Margin="22,2,22,0" FontSize="16" Text="Done" TextColor="#ffffff" BorderWidth="1" BorderColor="#ffffff"
+                HeightRequest="55"   CornerRadius="24"  BackgroundColor="#0066FF" FontFamily="Source Sans Pro" Clicked="Donebtn_Clicked"  />
+            
+       
+   
+    </StackLayout>
+</ContentPage>
+

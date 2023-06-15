@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Bewize.Views.Profile.Acc_ResetpwdPage" BackgroundColor="White"
+        xmlns:VM="clr-namespace:Bewize.ViewModels" xmlns:local="clr-namespace:Bewize.RenderFiles" NavigationPage.HasNavigationBar="False" 
+     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:behave="clr-namespace:Bewize.Behaviour" ios:Page.UseSafeArea="True">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <VM:Acc_ResetpwdVM x:Key="VM"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+  <ScrollView >
+    <StackLayout  HorizontalOptions="Center" VerticalOptions="StartAndExpand" Margin="10,10,10,0">
+        <Grid VerticalOptions="Center" Padding="8,15,10,15">
+            <Grid.RowDefinitions>
+                   <RowDefinition Height="40" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+              <Label Text="Reset password" 
+               Grid.Row="0" Grid.Column="1" VerticalTextAlignment="Center" HorizontalOptions="Center"
+               TextColor="#000000" FontFamily="Source Sans Pro" FontSize="26" FontAttributes="Bold" />
+
+              <Button x:Name="Backbtn" Grid.Row="0" Grid.Column="0" ImageSource="Backbtn.jpg" HeightRequest="40"
+                      WidthRequest="40" Margin="10" Command="{Binding Source={StaticResource VM},Path=backbtn_Command}"/>
+       
+        </Grid>
+          <Label Padding="30,0,30,35" Text="Atleast 9 characters with uppercase and lowercase letters." HorizontalOptions="Center" FontSize="20"  TextColor="#4D4D4D" FontFamily="Source Sans Pro" HorizontalTextAlignment="Center" />
+            <ContentView BackgroundColor="#00ffffff" HorizontalOptions="FillAndExpand" >
+            <Frame IsClippedToBounds="True" Margin="15" CornerRadius="25" HasShadow="True" BorderColor="#ffffff">
+                <StackLayout BackgroundColor="#0fffffff" > 
+          <Label Text="Change password" VerticalTextAlignment="Center" HorizontalOptions="Start"
+                   TextColor="#000000" FontFamily="Source Sans Pro" FontSize="26" FontAttributes="Bold" Padding="25,10,20,22" />
+          <Label Text="New Password" Margin="22,5,22,2"
+              VerticalTextAlignment="Center" 
+               TextColor="#000000" FontFamily="Source Sans Pro" FontSize="18" HeightRequest="20" />
+          <!--<Entry ReturnType="Done" Margin="22,2,22,5" FontFamily="Source Sans Pro"
+              Keyboard="Default" IsPassword="True" Placeholder="*********" FontSize="18" HeightRequest="40"></Entry>-->
+           <Grid Margin="25,10,22,6">
+             <Grid.ColumnDefinitions>
+                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="35" />
+             </Grid.ColumnDefinitions>
+               <local:CustomEntry  BackgroundColor="#00FFFFFF"  
+               FontFamily="Source Sans Pro" x:Name="pwdtxt"
+                 FontSize="18" Keyboard="Default" IsPassword="True" PlaceholderColor="#80393939" Placeholder="Enter your password" Grid.Row="0" Grid.Column="0">
+                     <local:CustomEntry.Behaviors>
+                       <behave:PasswordValidationBehavior />  
+                    </local:CustomEntry.Behaviors>
+                </local:CustomEntry>
+               <ImageButton x:Name="pwdShowbtn1" Grid.Row="0" BackgroundColor="#00FFFFFF" Clicked="pwdShowbtn_Clicked"   Grid.Column="1" WidthRequest="25" HeightRequest="28" Source="Eye.png"  VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"></ImageButton>
+            
+          </Grid>
+          <Label Margin="25,2,23,0" BackgroundColor="#4D4D4D" HeightRequest="0.8"> </Label>
+        
+         <Label Text="Confirm Password" Margin="22,25,22,2"
+              VerticalTextAlignment="Center"
+               TextColor="#000000" FontFamily="Source Sans Pro" FontSize="18" HeightRequest="20" />
+         <Grid Margin="25,10,22,0">
+             <Grid.ColumnDefinitions>
+                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="35" />
+             </Grid.ColumnDefinitions>
+               <local:CustomEntry  BackgroundColor="#00FFFFFF"  
+               FontFamily="Source Sans Pro" x:Name="confirmpwdxt"
+                 FontSize="18" Keyboard="Default" IsPassword="True" PlaceholderColor="#80393939" Placeholder="confirm your password" Grid.Row="0" Grid.Column="0">
+                    <local:CustomEntry.Behaviors>
+                       <behave:PasswordValidationBehavior />  
+                    </local:CustomEntry.Behaviors>
+               </local:CustomEntry>
+               <ImageButton x:Name="pwdshowbtn2" BackgroundColor="#00FFFFFF" Clicked="Showpwdiconbtn_Clicked"
+                            Grid.Row="0" Grid.Column="1" WidthRequest="25" HeightRequest="28" Source="Eye.png"  VerticalOptions="Center" HorizontalOptions="Center" Aspect="AspectFit"></ImageButton>
+            
+           </Grid>
+           <Label Margin="25,2,23,0" BackgroundColor="#4D4D4D" HeightRequest="0.8"> </Label>
+        
+           <Button x:Name="Resetpwdbtn" Margin="15,55,15,10" FontSize="18" BorderColor="#ffffffff"  Text="Reset Password" TextColor="#ffffff" BorderWidth="1"  HeightRequest="48" CornerRadius="24"
+                 BackgroundColor="#0066FF" FontFamily="Source Sans Pro"
+                Clicked="Resetpwdbtn_Clicked" FontAttributes="Bold" />
+              </StackLayout></Frame></ContentView>   
+    </StackLayout>
+  </ScrollView>
+    
+</ContentPage>
+
+
+
+    

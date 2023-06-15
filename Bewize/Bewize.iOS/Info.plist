@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDisplayName</key>
+	<string>Bewize</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.BeWize.BeWize-iOS</string>
+	<key>CFBundleName</key>
+	<string>Bewize</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>Google Services</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.313892348242-0fmkp0ab37s3vjiiffphan7b3hn5r94u</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+		</dict>
+	</array>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+	<key>MinimumOSVersion</key>
+	<string>8.0</string>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>Application allows to access Media library usage.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Appication Allows to access camera when in usages</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Application allows access location details when in usages.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Application always  access location details.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Application  uses location details when in usages.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Application allows to access microphone usages.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Application allows to use photo library</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Application allows to access photo library usage.</string>
+	<key>UIDeviceFamily</key>
+	<array>
+		<integer>1</integer>
+		<integer>2</integer>
+	</array>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>XSAppIconAssets</key>
+	<string>Assets.xcassets/AppIcon.appiconset</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoadsInWebContent</key>
+		<true/>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+</dict>
+</plist>

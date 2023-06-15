@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Bewize.RenderFiles" xmlns:local1="clr-namespace:Bewize.Models"
+    xmlns:VM="clr-namespace:Bewize.ViewModels"
+    x:Class="Bewize.Views.MyRating.CrimeTypePopupPage" BackgroundColor="#32000000">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <VM:CrimeTypePopupVM x:Key="VM"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+        <Frame Margin="25" BackgroundColor="White" VerticalOptions="CenterAndExpand" HeightRequest="{Binding OverWindowheight}" HorizontalOptions="CenterAndExpand" IsClippedToBounds="True" CornerRadius="20" HasShadow="True" BorderColor="WhiteSmoke">
+            <StackLayout Margin="5" HorizontalOptions="Center">
+                  <Label Text="Crime type" 
+                VerticalTextAlignment="Center" HorizontalOptions="Start"
+               TextColor="#000000" FontFamily="Source Sans Pro" FontSize="22"  HeightRequest="28" FontAttributes="Bold" />
+                   <Label Text="Tell us more about crime" Margin="0,0,0,15"
+                VerticalTextAlignment="Center" HorizontalOptions="Start"
+               TextColor="#70000000" FontFamily="Source Sans Pro" FontSize="15"  HeightRequest="22"  />
+
+            <Frame  BorderColor="LightGray" IsClippedToBounds="True"  CornerRadius="5"   HasShadow="False">
+                       
+             <Grid Margin="1" VerticalOptions="Center" >
+                      <Grid.RowDefinitions> <RowDefinition Height="40"/></Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/> 
+                            <ColumnDefinition Width="30"/>
+                        </Grid.ColumnDefinitions>
+
+                       <local:CustomEntry  x:Name="Crimetypetxt"  Grid.Row="0" Grid.Column="0"  BackgroundColor="#00FFFFFF" TextColor="Black" 
+                        FontFamily="Source Sans" IsReadOnly="True" VerticalTextAlignment="Center"  
+                        FontSize="18" Keyboard="Default" PlaceholderColor="#80393939" Placeholder="Select the crime" HorizontalTextAlignment="Start" />
+              
+                         <Button  BackgroundColor="White" x:Name="dropdownbtn" Grid.Row="0" Grid.Column="1" Clicked="dropdownbtn_Clicked" ImageSource="Dropdown.png" HeightRequest="30" WidthRequest="30"></Button>
+                        </Grid>
+               
+                </Frame>
+            <Frame BorderColor="LightGray" IsClippedToBounds="True"  CornerRadius="5"   HasShadow="False"  IsVisible="{Binding isListviewvisible}" >
+                   <ListView x:Name="Crimelist" HeightRequest="{Binding listviewheight}" IsVisible="{Binding isListviewvisible}" SelectionMode="Single" RowHeight="35"  Margin="5"  SeparatorVisibility="None" VerticalOptions="FillAndExpand" ItemsSource="{Binding Crimetypelist}"  VerticalScrollBarVisibility="Never" ItemTapped="Crimelist_ItemTapped"  SelectedItem="{Binding SelectedCrimetype}">
+                      <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                       <StackLayout>
+                                         <Label TextColor="#4D4D4D" Text="{Binding lebal}" HorizontalTextAlignment="Start" FontSize="15" VerticalOptions="Center" ></Label>
+                                         <Label BackgroundColor="LightSlateGray" HeightRequest="0.2" HorizontalOptions="FillAndExpand"/>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                    </ListView>
+                </Frame>
+                 <Button x:Name="Donebtn"  FontSize="16" Text="Done" TextColor="#ffffff" BorderWidth="1"  CornerRadius="24"
+                   BackgroundColor="#0066FF" FontFamily="Source Sans Pro" FontAttributes="Bold" BorderColor="#ffffff"
+                   Clicked="Donebtn_Clicked" HorizontalOptions="End" WidthRequest="150" Margin="0,20,0,20" VerticalOptions="End" />
+            </StackLayout>
+        </Frame>
+    
+</ContentPage>
+

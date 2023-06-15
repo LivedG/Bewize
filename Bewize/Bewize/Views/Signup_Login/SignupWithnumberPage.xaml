@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Bewize.Views.Signup_Login.SignupWithnumberPage"
+    xmlns:VM="clr-namespace:Bewize.ViewModels" BackgroundColor="White"
+    xmlns:local="clr-namespace:Bewize.RenderFiles" NavigationPage.HasNavigationBar="False"  
+     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:behave="clr-namespace:Bewize.Behaviour" ios:Page.UseSafeArea="True">
+
+     <ContentPage.Resources>
+        <ResourceDictionary>
+            <VM:SignupwithnumberVM x:Key="VM"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout Padding="12,10,12,15" >
+        <Grid  Padding="8,0,10,15">
+            <Grid.RowDefinitions>
+                   <RowDefinition Height="40" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+              <Label Text="Select a sign up method" 
+               Grid.Row="0" Grid.Column="1" VerticalTextAlignment="Center" HorizontalOptions="Center"
+               TextColor="#000000" FontFamily="Source Sans Pro" FontSize="25" FontAttributes="Bold" />
+
+             <Button x:Name="Backbtn" Grid.Row="0" Grid.Column="0" ImageSource="Backbtn.jpg" HeightRequest="40" WidthRequest="40" Margin="10" 
+                     Command="{Binding Source={StaticResource VM},Path=backbtn_cmd}"/>
+       
+        </Grid>
+         <Label Margin="25,30,22,15"  Text="Enter your phone number" HorizontalOptions="Start" FontSize="18"  TextColor="#4D4D4D" FontFamily="Source Sans Pro" HorizontalTextAlignment="Center" />
+        
+             <Grid Margin="22,5,22,20" HorizontalOptions="Center" VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="0.8"/>
+                   <RowDefinition Height="*" />
+                   <RowDefinition Height="55"/>
+                   <RowDefinition Height="2"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+             <Image Grid.Column="0"    Margin="2,20,0,0" Grid.Row="0" Source="{Binding selectedCountry.flag ,Mode=TwoWay}"/>
+            <local:CustomEntry Margin="2,20,0,0" BackgroundColor="#00FFFFFF"  Text="{Binding selectedCountry.country_code ,Mode=TwoWay}"    TextColor="#000000"
+               FontFamily="Source Sans Pro" Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Start" IsReadOnly="False"  x:Name="countytxt"
+                 FontSize="16" PlaceholderColor="#80393939" Placeholder="+ 91"  Focused="CustomEntry_Focused"/>
+           <local:CustomEntry x:Name="pnumbertxt" Margin="12,20,23,0" BackgroundColor="#00FFFFFF"     TextColor="#000000"
+               FontFamily="Source Sans Pro" Grid.Row="0" Grid.Column="2" MaxLength="{Binding selectedCountry.ph_length ,Mode=TwoWay}" PlaceholderColor="#80393939"
+               FontSize="16" Keyboard="Numeric"  Placeholder="Enter your mobile number">
+                 <!--<local:CustomEntry.Behaviors>
+                       <behave:NumberValidationBehavior/>
+                </local:CustomEntry.Behaviors>-->
+            </local:CustomEntry>
+                  <Label Margin="2,0,22,0" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#4D4D4D" HeightRequest="0.8"> </Label>
+                  <Label Margin="8,0,23,0" Grid.Row="1" Grid.Column="2" BackgroundColor="#4D4D4D" HeightRequest="0.8"> </Label>
+               <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3"></Label>
+               <Button x:Name="CreateAccountbtn" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Margin="2" VerticalOptions="End" FontSize="15" Text="Create Account" TextColor="#ffffff" BorderWidth="1" BorderColor="#ffffff"
+                HeightRequest="55"  CornerRadius="24"  BackgroundColor="#0066FF" FontFamily="Source Sans Pro"
+                 Clicked="CreateAccountbtn_Clicked"/>
+               <Label Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"></Label>
+
+        </Grid>
+             
+       
+   
+    </StackLayout>
+</ContentPage>
+

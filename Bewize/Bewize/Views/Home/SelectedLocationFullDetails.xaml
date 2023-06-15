@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Bewize.Views.Home.SelectedLocationFullDetails" 
+    BackgroundColor="#ffffff"   
+    NavigationPage.HasNavigationBar="False"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:VM="clr-namespace:Bewize.ViewModels" ios:Page.UseSafeArea="True">
+
+       
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <VM:SelectedLocationfullDetailsVM x:Key="VM"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    
+    <StackLayout Padding="10,0,10,0" IsClippedToBounds="True" HorizontalOptions="Center"  VerticalOptions="Fill">
+          <Grid VerticalOptions="Center" Padding="8,15,15,6">
+            <Grid.RowDefinitions>
+                   <RowDefinition Height="40" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+              <Label 
+               Grid.Row="0" Grid.Column="1" VerticalTextAlignment="Center"  HorizontalTextAlignment="Center"
+               TextColor="#000000" FontFamily="Source Sans Pro" FontSize="26" FontAttributes="Bold" />
+
+              <Button x:Name="Backbtn" Grid.Row="0" Grid.Column="0" ImageSource="Backbtn.jpg" HeightRequest="40" WidthRequest="40" Margin="10" 
+                  Command="{Binding Source={StaticResource VM},Path=backbtnAction}"  />
+       
+        </Grid> <ScrollView>
+       <StackLayout>
+            <Frame Margin="18,5,18,10" BorderColor="#E2E2E2" BackgroundColor="#ffffff" HasShadow="True" IsClippedToBounds="True" CornerRadius="25">
+                <Grid>
+                    <Grid.RowDefinitions>
+                         <RowDefinition Height="250"/>
+                         <!--<RowDefinition Height="50"/>-->
+                         <RowDefinition Height="60"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                         <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                          <ContentView x:Name="ContentMap" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Grid.Row="0"  Grid.Column="0"  />
+                         <!--<Label x:Name="Place_lbl" Grid.Row="1" Margin="12,12,12,2" VerticalTextAlignment="Center" Grid.Column="0" FontFamily="Source Sans Pro" TextColor="#000000"  FontAttributes="Bold" FontSize="22"/>-->
+                         <Label x:Name="address_lbl" Grid.Row="1" Margin="12,2,12,2" VerticalTextAlignment="Center" Grid.Column="0"  FontFamily="Source Sans Pro" TextColor="#000000"  FontSize="18"/>
+                         <!--<Label x:Name="Posttiming_lbl" Grid.Row="3" Margin="12,0,12,0" VerticalTextAlignment="Center" Grid.Column="0"  FontFamily="Source Sans Pro" TextColor="#959595"  FontSize="14"/>-->
+                    </Grid>
+            </Frame>
+
+            <Frame Margin="12,20,22,8" BackgroundColor="#80EBEBEB" CornerRadius="20" HeightRequest="8"  HasShadow="False" VerticalOptions="Center">
+             <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/><ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="geoCrimebtn" Grid.Row="0" Grid.Column="0" Text="GeoCrime details" BackgroundColor="#ffffff" Margin="-18,-18,-22,-18"  CornerRadius="21" FontSize="12" Clicked="geoCrimebtn_Clicked" TextColor="DarkGray" FontAttributes="Bold" ></Button>
+                <Button x:Name="gunViolencebtn" Grid.Row="0" Grid.Column="1" Text="Gun Violence" Margin="-15,-18,-20,-18" CornerRadius="21" FontSize="12" Clicked="gunViolencebtn_Clicked" TextColor="#80000000" FontAttributes="Bold" ></Button>
+             </Grid>
+           </Frame>
+            <Frame x:Name="GeoCrimeContent" Margin="18,5,18,10" HeightRequest="550" BorderColor="#E2E2E2" BackgroundColor="#ffffff" HasShadow="True" IsClippedToBounds="True" CornerRadius="25">
+                 <Grid  Margin="10"> <Grid.RowDefinitions>
+                             <RowDefinition Height="40" />
+                             <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
+                             <RowDefinition Height="40"/> <RowDefinition Height="40"/> <RowDefinition Height="40"/>
+                         <RowDefinition Height="40"/> <RowDefinition Height="40"/> <RowDefinition Height="40"/> <RowDefinition Height="40"/></Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                         <Label Grid.Row="0" Text="Total population :" FontSize="16" Grid.Column="0" TextColor="#60393939" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                         <Label Text="{Binding selectedlocationdetails.POPCY ,Mode=TwoWay}" FontSize="16" HeightRequest="20"  FontAttributes="Bold" TextColor="#FE0137" BackgroundColor="#80FFE8EC"  Grid.Column="1" Grid.Row="0" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"  />
+                         <Label Grid.Row="1" Text="Total crime rate :" FontSize="16" Grid.Column="0" TextColor="#60393939" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                         <Label Text="{Binding selectedlocationdetails.CRMCYTOTC ,Mode=TwoWay}" FontSize="16" HeightRequest="20"  FontAttributes="Bold" TextColor="#FE0137" BackgroundColor="#80FFE8EC"  Grid.Column="1" Grid.Row="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                         <Label Grid.Row="2" Text="Total personal crime incidents :" FontSize="16" Grid.Column="0" TextColor="#60393939" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                         <Label Text="{Binding selectedlocationdetails.CRMCYPERC ,Mode=TwoWay}" FontSize="16" HeightRequest="20"   FontAttributes="Bold" TextColor="#FE0137" BackgroundColor="#80FFE8EC"  Grid.Column="1" Grid.Row="2" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                         <Label Grid.Row="3" Text="Total murder incidents :" FontSize="16" Grid.Column="0" TextColor="#60393939" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                         <Label Text="{Binding selectedlocationdetails.CRMCYMURD ,Mode=TwoWay}" FontSize="16" HeightRequest="20"   FontAttributes="Bold" TextColor="#FE0137" BackgroundColor="#80FFE8EC"  Grid.Column="1" Grid.Row="3" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                         <Label Grid.Row="4" Text="Total rape crime incidents :" FontSize="16" Grid.Column="0" TextColor="#60393939" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                         <Label Text="{Binding selectedlocationdetails.CRMCYRAPE ,Mode=TwoWay}" FontSize="16" HeightRequest="20"   FontAttributes="Bold" TextColor="#FE0137" BackgroundColor="#80FFE8EC"  Grid.Column="1" Grid.Row="4" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                         <Label Grid.Row="5" Text="Total robbery crime incidents :" FontSize="16" Grid.Column="0" TextColor="#60393939" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                         <Label Text="{Binding selectedlocationdetails.CRMCYROBB ,Mode=TwoWay}" FontSize="16" HeightRequest="20"   FontAttributes="Bold" TextColor="#FE0137" BackgroundColor="#80FFE8EC"  Grid.Column="1" Grid.Row="5" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                         <Label Grid.Row="6" Text="Total assault incidents :" FontSize="16" Grid.Column="0" TextColor="#60393939" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                         <Label Text="{Binding selectedlocationdetails.CRMCYASST ,Mode=TwoWay}" FontSize="16" HeightRequest="20"   FontAttributes="Bold" TextColor="#FE0137" BackgroundColor="#80FFE8EC"  Grid.Column="1" Grid.Row="6" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                         <Label Grid.Row="7" Text="Total property crime incidents :" FontSize="16" Grid.Column="0" TextColor="#60393939" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                         <Label Text="{Binding selectedlocationdetails.CRMCYPROC ,Mode=TwoWay}" FontSize="16" HeightRequest="20"   FontAttributes="Bold" TextColor="#FE0137" BackgroundColor="#80FFE8EC"  Grid.Column="1" Grid.Row="7" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                         <Label Grid.Row="8" Text="Total  burglary incidents :" FontSize="16" Grid.Column="0" TextColor="#60393939" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                         <Label Text="{Binding selectedlocationdetails.CRMCYBURG ,Mode=TwoWay}" FontSize="16" HeightRequest="20"  FontAttributes="Bold" TextColor="#FE0137" BackgroundColor="#80FFE8EC"  Grid.Column="1" Grid.Row="8" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                         <Label Grid.Row="9" Text="Total larceny incidents :" FontSize="16" Grid.Column="0" TextColor="#60393939" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                         <Label Text="{Binding selectedlocationdetails.CRMCYLARC ,Mode=TwoWay}" FontSize="16" HeightRequest="20"   FontAttributes="Bold" TextColor="#FE0137" BackgroundColor="#80FFE8EC"  Grid.Column="1" Grid.Row="9" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                         <Label Grid.Row="10" Text="Total motor vehicle theft incidents:" FontSize="16" Grid.Column="0" TextColor="#60393939" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
+                         <Label Text="{Binding selectedlocationdetails.CRMCYMVEH ,Mode=TwoWay}" FontSize="16" HeightRequest="20"  FontAttributes="Bold" TextColor="#FE0137" BackgroundColor="#80FFE8EC"  Grid.Column="1" Grid.Row="10" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+
+                    </Grid>
+            </Frame>
+
+             <Frame x:Name="GunviolenceContent" Margin="18,5,18,10" HeightRequest="100" BorderColor="#E2E2E2" BackgroundColor="#ffffff" HasShadow="True" IsClippedToBounds="True" CornerRadius="25">
+                 <Grid Margin="10"> <Grid.RowDefinitions> </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="80"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Total Gun Violence Incidents Since 01-01-2021 :" FontSize="16" Grid.Column="0" TextColor="#60393939" />
+                        <Label Text="1" FontSize="16" HeightRequest="20" Margin="10"  FontAttributes="Bold" TextColor="#FE0137" BackgroundColor="#80FFE8EC"  Grid.Column="1" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                 </Grid>
+             </Frame>
+
+            </StackLayout>
+       </ScrollView></StackLayout>
+</ContentPage>
+
+
+

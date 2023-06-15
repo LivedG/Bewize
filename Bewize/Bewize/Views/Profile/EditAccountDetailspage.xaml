@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:Bewize.RenderFiles"
+    x:Class="Bewize.Views.Profile.EditAccountDetailspage" NavigationPage.HasNavigationBar="False" BackgroundColor="White"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:VM="clr-namespace:Bewize.ViewModels" ios:Page.UseSafeArea="True">
+
+    
+  
+     <ContentPage.Resources>
+        <ResourceDictionary>
+            <VM:EditAccountdetailsVM x:Key="VM"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ScrollView Padding="1">
+   <StackLayout  HorizontalOptions="Center" VerticalOptions="FillAndExpand" >
+        <Grid VerticalOptions="Center" Padding="8,15,10,15">
+            <Grid.RowDefinitions>
+                   <RowDefinition Height="40" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Label Text="Account Settings" 
+               Grid.Row="0" Grid.Column="1" VerticalTextAlignment="Center" HorizontalOptions="Center"
+               TextColor="#000000" FontFamily="Source Sans Pro" FontSize="26" FontAttributes="Bold" />
+
+            <Button x:Name="Backbtn" Grid.Row="0" Grid.Column="0" ImageSource="Backbtn.jpg" HeightRequest="40" WidthRequest="40" Margin="10"
+                 Command="{Binding Source={StaticResource VM},Path=EditBackbtn_Cmd}"/>
+        </Grid>
+
+        <StackLayout Margin="5" VerticalOptions="CenterAndExpand">
+            <Frame CornerRadius="25" BorderColor="#ffffff" HeightRequest="820" Margin="27,8,27,5" VerticalOptions="CenterAndExpand">
+                <Grid Margin="5,12,5,5" VerticalOptions="Center" HorizontalOptions="Center"  >
+                    <Grid.RowDefinitions>
+                     <RowDefinition Height="40"/>
+                            <RowDefinition Height="150"/>
+                          <RowDefinition Height="22"/>
+                             <RowDefinition Height="40"/>
+                                  <RowDefinition Height="0.8"/>
+                               <RowDefinition Height="22"/>
+                             <RowDefinition Height="40"/>
+                                  <RowDefinition Height="0.8"/>
+                            <RowDefinition Height="22"/>
+                             <RowDefinition Height="40"/>
+                                  <RowDefinition Height="0.8"/>
+                            <RowDefinition Height="22"/>
+                             <RowDefinition Height="40"/>
+                                  <RowDefinition Height="0.8"/>
+                            <RowDefinition Height="22"/>
+                             <RowDefinition Height="40"/>
+                                  <RowDefinition Height="0.8"/>
+                        <RowDefinition Height="22"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="0.8"/>
+                            <RowDefinition Height="15"/>
+                             <RowDefinition Height="30"/>
+                            <RowDefinition Height="55"/>
+                            <RowDefinition Height="5"/>
+                    </Grid.RowDefinitions>
+                   <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/> </Grid.ColumnDefinitions>
+                   <Label Text="Personal Details" 
+                 Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" VerticalTextAlignment="Center" HorizontalOptions="Start"
+               TextColor="#000000" FontFamily="Source Sans Pro" FontSize="20" FontAttributes="Bold" />
+ <Frame Grid.Row="1"
+           Grid.Column="0"
+          Grid.ColumnSpan="2"
+           Padding="0"
+           HorizontalOptions="CenterAndExpand"
+           VerticalOptions="Center"
+           CornerRadius="50"
+           IsClippedToBounds="True"
+           HeightRequest="100"
+           WidthRequest="100" 
+           BackgroundColor="CornflowerBlue">
+           <Image HeightRequest="100" WidthRequest="100" x:Name="Profileimage" Source = "usericon.png" VerticalOptions="CenterAndExpand"
+               HorizontalOptions="CenterAndExpand"  />
+             
+    </Frame>
+              <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center"  VerticalOptions="Center" FontSize="8" HeightRequest="80" FontAttributes="Bold" TextColor="#FFFFFF"  BackgroundColor="#35000000" WidthRequest="80" CornerRadius="40" ImageSource="Pen.png" Text="Upload" Opacity="0.5"  CharacterSpacing="0" Visual="Default" Clicked="Uploadimg_Clicked"   />
+
+             <Label Margin="5,0,5,0" Text="Public name"  TextColor="#4C4C4C" FontFamily="Source Sans Pro" FontSize="16" HeightRequest="18" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" ></Label>
+             <local:CustomEntry BackgroundColor="#00FFFFFF" x:Name="Publicnametxt"
+               FontFamily="Source Sans Pro" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" TextColor="#000000" Placeholder="Public name"
+                 FontSize="18" Keyboard="Default" Text="{Binding Profiledetails.fname ,Mode=TwoWay}" Margin="5,0,5,0"/>
+                 <Label  BackgroundColor="#4D4D4D" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"  HeightRequest="0.8" Margin="5,0,5,0"> </Label>
+              
+              <Label Text="Your name"  TextColor="#4C4C4C" FontFamily="Source Sans Pro" Margin="5,0,5,0" FontSize="16" HeightRequest="18" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" ></Label>
+              <!--<local:CustomEntry BackgroundColor="#00FFFFFF" 
+               FontFamily="Source Sans Pro" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" TextColor="#000000" PlaceholderColor="#80393939" Placeholder="Your name"
+                 FontSize="18" Keyboard="Default" Text="Yohan" Margin="5,0,5,-1"/>-->
+                <local:CustomEntry BackgroundColor="#00FFFFFF" x:Name="Firstnametxt"
+               FontFamily="Source Sans Pro" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" TextColor="#000000" Placeholder="Your name"
+                 FontSize="18" Keyboard="Default" Text="{Binding Profiledetails.fname ,Mode=TwoWay}" Margin="5,0,5,0"/>
+               <Label Margin="5,0,5,0" BackgroundColor="#4D4D4D" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2"  HeightRequest="0.8" Padding="0,0,0,5"> </Label>
+
+              <Label Text="User name" TextColor="#4C4C4C"  Margin="5,0,5,0" FontFamily="Source Sans Pro" FontSize="16" HeightRequest="18" Grid.ColumnSpan="2" Grid.Row="8" Grid.Column="0"></Label>
+               <local:CustomEntry BackgroundColor="#00FFFFFF"  x:Name="Usernametxt"
+               FontFamily="Source Sans Pro" Grid.Row="9" Grid.Column="0"  Grid.ColumnSpan="2" TextColor="#000000" Text="{Binding Profiledetails.username ,Mode=TwoWay}"
+                 FontSize="18" Keyboard="Default"   Placeholder="User name"  PlaceholderColor="#80393939"  Margin="5,0,5,0"/>
+               <Label Margin="5,0,5,0" BackgroundColor="#4D4D4D"   Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2"  HeightRequest="0.8"  Padding="0,0,0,5" > </Label>
+
+               <Label Text="Mobile number" TextColor="#4C4C4C"  Margin="5,0,5,0" FontFamily="Source Sans Pro" FontSize="16" HeightRequest="18" Grid.ColumnSpan="2"  Grid.Row="11" Grid.Column="0"></Label>
+               <!--<local:CustomEntry BackgroundColor="#00FFFFFF"   x:Name="Phonenumbertxt"  Focused="Phonenumbertxt_Focused"
+               FontFamily="Source Sans Pro" Grid.Row="12" Grid.Column="0"  Grid.ColumnSpan="2"  TextColor="#000000"  Text="{Binding Profiledetails.phone ,Mode=TwoWay}"
+                 FontSize="18" Keyboard="Numeric" MaxLength="10"  PlaceholderColor="#80393939"  Placeholder="enter phone Number" Margin="5,0,5,0"/>-->
+
+              <local:CustomEntry x:Name="Countrycodetxt" Margin="2,0,0,0" BackgroundColor="#00FFFFFF" Text="{Binding Profiledetails.country_code ,Mode=TwoWay}"
+               FontFamily="Source Sans Pro" Grid.Row="12" Grid.Column="0" HorizontalTextAlignment="Start"  TextColor="#000000"
+                 FontSize="16"  PlaceholderColor="#80393939" Placeholder="+ 91" MaxLength="4" Focused="Countrycodetxt_Focused" />
+              <local:CustomEntry BackgroundColor="#00FFFFFF"   x:Name="Phonenumbertxt"  Focused="Phonenumbertxt_Focused" TextChanged="Phonenumbertxt_TextChanged"
+               FontFamily="Source Sans Pro" Grid.Row="12" Grid.Column="1"  TextColor="#000000"  Text="{Binding Profiledetails.phone ,Mode=TwoWay}"
+                 FontSize="18" Keyboard="Numeric" MaxLength="{Binding selectedCountry.ph_length ,Mode=TwoWay}"  PlaceholderColor="#80393939"  Placeholder="phone Number" Margin="5,0,5,0"/>
+
+               <Label Padding="5,0,5,5" BackgroundColor="#4D4D4D" Grid.ColumnSpan="2"   Grid.Row="13" Grid.Column="0" HeightRequest="0.8" > </Label>
+                        
+               <Label Text="Email" TextColor="#4C4C4C"  Margin="5,0,5,0" FontFamily="Source Sans Pro" FontSize="16" HeightRequest="18" Grid.ColumnSpan="2"  Grid.Row="14" Grid.Column="0"></Label>
+               <local:CustomEntry BackgroundColor="#00FFFFFF"   x:Name="emailtxt"  Focused="emailtxt_Focused"
+               FontFamily="Source Sans Pro" Grid.Row="15" Grid.Column="0"  Grid.ColumnSpan="2"  TextColor="#000000"  Text="{Binding Profiledetails.email ,Mode=TwoWay}"
+                 FontSize="18" Keyboard="Email"  PlaceholderColor="#80393939"  Placeholder="enter email" Margin="5,0,5,0"/>
+               <Label Padding="5,0,5,5" BackgroundColor="#4D4D4D" Grid.ColumnSpan="2"   Grid.Row="16" Grid.Column="0" HeightRequest="0.8" > </Label>
+
+                <Label Text="Your base location" TextColor="#4C4C4C"  Margin="5,0,5,0" FontFamily="Source Sans Pro" FontSize="16" HeightRequest="18" Grid.ColumnSpan="2"  Grid.Row="17" Grid.Column="0"></Label>
+               <local:CustomEntry BackgroundColor="#00FFFFFF"  x:Name="locationtxt" MaxLength="6"
+               FontFamily="Source Sans Pro" Grid.Row="18" Grid.Column="0"  Grid.ColumnSpan="2"  TextColor="#000000" Text="{Binding Profiledetails.zipcode ,Mode=TwoWay}"
+                FontSize="18" Keyboard="Numeric"  PlaceholderColor="#80393939"  Placeholder="Zipcode" Margin="5,0,5,0"/>
+               <!--<local:CustomEntry BackgroundColor="#00FFFFFF"   
+               FontFamily="Source Sans Pro" Grid.Row="15" Grid.Column="0"  Grid.ColumnSpan="2"  TextColor="#000000" 
+                 FontSize="18" Keyboard="Default" PlaceholderColor="#80393939" Placeholder="zip code" Margin="5,0,5,0"/>-->
+               <Label Padding="5,0,5,5" BackgroundColor="#4D4D4D" Grid.ColumnSpan="2"   Grid.Row="19" Grid.Column="0" HeightRequest="0.8" > </Label>
+         
+               <Label Grid.Row="20" Grid.Column="0" HeightRequest="15" Text="Use my current location" FontFamily="Source Sans Pro" FontSize="12" TextColor="#0066FF"></Label>
+                        <Label Grid.Row="21" Grid.Column="0" ></Label>
+                   <Button x:Name="Savebtn"  FontSize="16" Text="Save" TextColor="#ffffff" BorderWidth="1"  CornerRadius="24"
+                   BackgroundColor="#0066FF" FontFamily="Source Sans Pro" FontAttributes="Bold" BorderColor="#ffffff" Grid.ColumnSpan="2"
+                   Grid.Row="22" Grid.Column="0"  Clicked="Savebtn_Clicked" />
+                     <Label Grid.Row="23" Grid.Column="0" ></Label>
+               </Grid>
+                
+            </Frame>
+             <Frame CornerRadius="25" BorderColor="#ffffff" HeightRequest="60" Margin="27,15,27,12">
+                <Grid Margin="5,5,5,5" HorizontalOptions="FillAndExpand" Padding="5" HeightRequest="34" VerticalOptions="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="32"/>
+                            
+                        </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions><ColumnDefinition Width="*"/> <ColumnDefinition Width="38"/> </Grid.ColumnDefinitions>
+                   <Label Text="Change Password"  
+                 Grid.Row="0" Grid.Column="0" VerticalTextAlignment="Center" HorizontalOptions="Start"
+               TextColor="#000000" FontFamily="Source Sans Pro" FontSize="20" FontAttributes="Bold" />
+                    <Button Grid.Column="1" Grid.Row="0" BackgroundColor="#00ffffff"  ImageSource="leftarrow.png" FontAttributes="Bold"
+                            FontFamily="Source Sans Pro" HeightRequest="32" WidthRequest="32"
+                             Command="{Binding Source={StaticResource VM},Path=EditAcChangepwd_command}" ></Button>
+                   
+               </Grid>
+              
+            </Frame>
+        </StackLayout>
+   </StackLayout>
+    </ScrollView>
+</ContentPage>
