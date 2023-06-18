@@ -1,21 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "/Users/moksha/Desktop/Bewize_project/Bewize/Bewize/Bewize.Android/Bewize.Android.csproj": {}
+    "/Users/vishal/Documents/GitHub/Bewize/Bewize/Bewize.Android/Bewize.Android.csproj": {}
   },
   "projects": {
-    "/Users/moksha/Desktop/Bewize_project/Bewize/Bewize/Bewize.Android/Bewize.Android.csproj": {
+    "/Users/vishal/Documents/GitHub/Bewize/Bewize/Bewize.Android/Bewize.Android.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/moksha/Desktop/Bewize_project/Bewize/Bewize/Bewize.Android/Bewize.Android.csproj",
+        "projectUniqueName": "/Users/vishal/Documents/GitHub/Bewize/Bewize/Bewize.Android/Bewize.Android.csproj",
         "projectName": "Bewize.Android",
-        "projectPath": "/Users/moksha/Desktop/Bewize_project/Bewize/Bewize/Bewize.Android/Bewize.Android.csproj",
-        "packagesPath": "/Users/moksha/.nuget/packages/",
-        "outputPath": "/Users/moksha/Desktop/Bewize_project/Bewize/Bewize/Bewize.Android/obj/",
+        "projectPath": "/Users/vishal/Documents/GitHub/Bewize/Bewize/Bewize.Android/Bewize.Android.csproj",
+        "packagesPath": "/Users/vishal/.nuget/packages/",
+        "outputPath": "/Users/vishal/Documents/GitHub/Bewize/Bewize/Bewize.Android/obj/",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "configFilePaths": [
-          "/Users/moksha/.config/NuGet/NuGet.Config"
+          "/Users/vishal/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "monoandroid12.0"
@@ -26,8 +26,8 @@
         "frameworks": {
           "monoandroid12.0": {
             "projectReferences": {
-              "/Users/moksha/Desktop/Bewize_project/Bewize/Bewize/Bewize/Bewize.csproj": {
-                "projectPath": "/Users/moksha/Desktop/Bewize_project/Bewize/Bewize/Bewize/Bewize.csproj"
+              "/Users/vishal/Documents/GitHub/Bewize/Bewize/Bewize/Bewize.csproj": {
+                "projectPath": "/Users/vishal/Documents/GitHub/Bewize/Bewize/Bewize/Bewize.csproj"
               }
             }
           }
@@ -92,23 +92,22 @@
         }
       }
     },
-    "/Users/moksha/Desktop/Bewize_project/Bewize/Bewize/Bewize/Bewize.csproj": {
+    "/Users/vishal/Documents/GitHub/Bewize/Bewize/Bewize/Bewize.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/moksha/Desktop/Bewize_project/Bewize/Bewize/Bewize/Bewize.csproj",
+        "projectUniqueName": "/Users/vishal/Documents/GitHub/Bewize/Bewize/Bewize/Bewize.csproj",
         "projectName": "Bewize",
-        "projectPath": "/Users/moksha/Desktop/Bewize_project/Bewize/Bewize/Bewize/Bewize.csproj",
-        "packagesPath": "/Users/moksha/.nuget/packages/",
-        "outputPath": "/Users/moksha/Desktop/Bewize_project/Bewize/Bewize/Bewize/obj/",
+        "projectPath": "/Users/vishal/Documents/GitHub/Bewize/Bewize/Bewize/Bewize.csproj",
+        "packagesPath": "/Users/vishal/.nuget/packages/",
+        "outputPath": "/Users/vishal/Documents/GitHub/Bewize/Bewize/Bewize/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/moksha/.config/NuGet/NuGet.Config"
+          "/Users/vishal/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
         ],
         "sources": {
-          "/usr/local/share/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -190,7 +189,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.408/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/Users/vishal/Library/Caches/VisualStudio/17.0/MSBuild/2608_3/RuntimeIdentifierGraph.json"
         }
       }
     }
