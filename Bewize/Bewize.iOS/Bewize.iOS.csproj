@@ -75,7 +75,6 @@
     <Compile Include="Render_files\Custom_iosEntry.cs" />
     <Compile Include="Render_files\Custom_iosSearchbar.cs" />
     <Compile Include="Render_files\Custom_iosEntryEditor.cs" />
-    <None Include=".DS_Store" />
     <Compile Include="Render_files\SigninWithAppleserviice.cs" />
     <None Include="GoogleService-Info.plist" />
   </ItemGroup>
