@@ -11,7 +11,7 @@
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     ios:Page.UseSafeArea="True">
 
-    
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <VM:MyRatingsProVM x:Key="VM"/>
@@ -19,9 +19,9 @@
     </ContentPage.Resources>
 
     <StackLayout Padding="10,15,10,0" IsClippedToBounds="True" HorizontalOptions="Center"  VerticalOptions="Fill">
-          <Grid VerticalOptions="Center" Padding="8,15,15,6">
+        <Grid VerticalOptions="Center" Padding="8,15,15,6">
             <Grid.RowDefinitions>
-                   <RowDefinition Height="40" />
+                <RowDefinition Height="40" />
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
@@ -29,110 +29,121 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-              <Label 
+            <Label 
                Grid.Row="0" Grid.Column="1" VerticalTextAlignment="Center"  HorizontalTextAlignment="Center"
                TextColor="#000000" FontFamily="Source Sans Pro" FontSize="26" FontAttributes="Bold" />
 
-              <Button x:Name="Backbtn" Grid.Row="0" Grid.Column="0" ImageSource="Backbtn.jpg" HeightRequest="40" WidthRequest="40" Margin="10" 
+            <Button x:Name="Backbtn" Grid.Row="0" Grid.Column="0" ImageSource="Backbtn.jpg" HeightRequest="40" WidthRequest="40" Margin="10" 
                      Command="{Binding Source={StaticResource VM},Path=backbtn_Command}"/>
-       
-        </Grid> <ScrollView>
-       <StackLayout>
-            <Frame Margin="18,5,18,10" BorderColor="#E2E2E2" BackgroundColor="#ffffff" HasShadow="True" IsClippedToBounds="True" CornerRadius="25">
-                <Grid>
-                    <Grid.RowDefinitions>
-                         <RowDefinition Height="200"/>
-                         <!--<RowDefinition Height="50"/>-->
-                         <RowDefinition Height="45"/>
-                         <!--<RowDefinition Height="20"/>-->
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                         <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                          <ContentView x:Name="ContentMap" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Grid.Row="0"  Grid.Column="0"  />
-                         <!--<Label x:Name="Placelbl" Grid.Row="1" Margin="12,12,12,2" VerticalTextAlignment="Center" Grid.Column="0" Text="AB Road" FontFamily="Source Sans Pro" TextColor="#000000"  FontAttributes="Bold" FontSize="22"/>-->
-                         <Label x:Name="Placeaddresslbl" Grid.Row="1" Margin="12,2,12,2" VerticalTextAlignment="Center" Grid.Column="0"  Text="AB Road, Indore, MP" FontFamily="Source Sans Pro" TextColor="#000000"  FontSize="18"/>
-                         <!--<Label x:Name="Posttiminglbl" Grid.Row="3" Margin="12,0,12,0" VerticalTextAlignment="Center" Grid.Column="0"  Text="Posted 6 seconds ago, Updated 6 seconds ago" FontFamily="Source Sans Pro" TextColor="#959595"  FontSize="14"/>-->
+
+        </Grid>
+        <ScrollView>
+            <StackLayout>
+                <Frame Margin="18,5,18,10" BorderColor="#E2E2E2" BackgroundColor="#ffffff" HasShadow="True" IsClippedToBounds="True" CornerRadius="25">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="200"/>
+                            <!--<RowDefinition Height="50"/>-->
+                            <RowDefinition Height="auto"/>
+                            <!--<RowDefinition Height="20"/>-->
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <ContentView x:Name="ContentMap" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Grid.Row="0"  Grid.Column="0"  />
+                        <!--<Label x:Name="Placelbl" Grid.Row="1" Margin="12,12,12,2" VerticalTextAlignment="Center" Grid.Column="0" Text="AB Road" FontFamily="Source Sans Pro" TextColor="#000000"  FontAttributes="Bold" FontSize="22"/>-->
+                        <Label x:Name="Placeaddresslbl" Grid.Row="1" Margin="2,2,12,2" VerticalTextAlignment="Center" Grid.Column="0"  Text="AB Road, Indore, MP" FontFamily="Source Sans Pro" TextColor="#000000"  FontSize="18"/>
+                        <!--<Label x:Name="Posttiminglbl" Grid.Row="3" Margin="12,0,12,0" VerticalTextAlignment="Center" Grid.Column="0"  Text="Posted 6 seconds ago, Updated 6 seconds ago" FontFamily="Source Sans Pro" TextColor="#959595"  FontSize="14"/>-->
                     </Grid>
-            </Frame>
-            <Frame Margin="18,10,18,20" BorderColor="#E2E2E2" BackgroundColor="#ffffff" HasShadow="True" IsClippedToBounds="True" CornerRadius="25">
-                <Grid>
-                    <Grid.RowDefinitions>
-                         <RowDefinition Height="60"/>
-                         <RowDefinition Height="{Binding Questionsectionheight}"/>
-                         <RowDefinition Height="120"/>
-                         <RowDefinition Height="120"/>
-                         <RowDefinition Height="60"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                         <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Label Grid.Row="0" Margin="12,0,12,0" VerticalTextAlignment="Center" Grid.Column="0" Text="Questions" FontFamily="Source Sans Pro" TextColor="#000000"  FontAttributes="Bold" FontSize="22"/>
-                     <ListView Grid.Row="1"  Grid.Column="0" RowHeight="150" SeparatorVisibility="None" x:FieldModifier="public" x:Name="questionsList" ItemsSource="{Binding RateQuestionslist}" >
-                        
-                        <ListView.ItemTemplate>
+                </Frame>
+
+                <Frame Margin="18,10,18,20" BorderColor="#E2E2E2" BackgroundColor="#ffffff" HasShadow="True" IsClippedToBounds="True" CornerRadius="25">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="60"/>
+                            <RowDefinition Height="{Binding Questionsectionheight}"/>
+                            <RowDefinition Height="120"/>
+                            <RowDefinition Height="120"/>
+                            <RowDefinition Height="60"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="0" Margin="12,0,12,0" VerticalTextAlignment="Center" Grid.Column="0" Text="Questions" FontFamily="Source Sans Pro" TextColor="#000000"  FontAttributes="Bold" FontSize="22"/>
+                        <ListView Grid.Row="1"  Grid.Column="0" RowHeight="150" SeparatorVisibility="None" x:FieldModifier="public" x:Name="questionsList" ItemsSource="{Binding RateQuestionslist}" >
+
+                            <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
                                         <StackLayout BackgroundColor="#ffffff">
 
-                                             <Label  x:Name="Questiontypelbl" Text="{Binding title}" Margin="12,0,12,0" FontFamily="Source Sans Pro" TextColor="#2B92FC"  FontSize="14" ></Label>
-                                             <Label x:Name="QuestionDesclbl" Text="{Binding que}" Margin="12,0,12,0" FontFamily="Source Sans Pro" TextColor="#000000"  FontSize="18" ></Label>
-                                             <Grid x:Name="Parentgrid">
-                                                  <Grid.RowDefinitions>
-                                                    <RowDefinition Height="50" x:Uid="row1" /> <RowDefinition Height="15"/>
-                                                    </Grid.RowDefinitions>
-                                                    <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*" /> <ColumnDefinition Width="*" /> <ColumnDefinition Width="*" /> 
-                                                    <ColumnDefinition Width="*" /> <ColumnDefinition Width="*" /> </Grid.ColumnDefinitions>
+                                            <Label  x:Name="Questiontypelbl" Text="{Binding title}" Margin="12,0,12,0" FontFamily="Source Sans Pro" TextColor="#2B92FC"  FontSize="14" ></Label>
+                                            <Label x:Name="QuestionDesclbl" Text="{Binding que}" Margin="12,0,12,0" FontFamily="Source Sans Pro" TextColor="#000000"  FontSize="18" ></Label>
+                                            <Grid x:Name="Parentgrid">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="50" x:Uid="row1" />
+                                                    <RowDefinition Height="15"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
 
-                                                   <ImageButton  x:FieldModifier="public" x:Name="Ratebtnone" Grid.Row="0" Grid.Column="0" CornerRadius="22" Margin="2"  BackgroundColor="#00ffffff"  Clicked="Ratebtn1_Clicked" VerticalOptions="Center" Source="Frustated.png" ></ImageButton>
-                                                   <ImageButton  x:FieldModifier="public" x:Name="Ratebtntwo" Grid.Row="0" Grid.Column="1" CornerRadius="22" Margin="2"  BackgroundColor="#00ffffff"  Clicked="Ratebtntwo_Clicked" VerticalOptions="Center"  Source="Sad.png"></ImageButton>
-                                                   <ImageButton  x:FieldModifier="public" x:Name="RatebtnThird" Grid.Row="0" Grid.Column="2" CornerRadius="22" Margin="2"  BackgroundColor="#00ffffff"  Clicked="RatebtnThird_Clicked" VerticalOptions="Center"  Source="Neutral.png"></ImageButton>
-                                                   <ImageButton  x:FieldModifier="public" x:Name="RatebtnFour" Grid.Row="0" Grid.Column="3" CornerRadius="22"  Margin="2"  BackgroundColor="#00ffffff"  Clicked="RatebtnFour_Clicked" VerticalOptions="Center" Source="Happy.png"></ImageButton>
-                                                   <ImageButton  x:FieldModifier="public" x:Name="RatebtnFive" Grid.Row="0" Grid.Column="4" CornerRadius="22"  Margin="2" BackgroundColor="#00ffffff"  Clicked="RatebtnFive_Clicked" VerticalOptions="Center" Source="Joyfull.png"></ImageButton>
-                                                   <Image Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" HeightRequest="10" Source="Emotionmeter.png"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Aspect="AspectFill"> </Image>
-                                           
+                                                <ImageButton  x:FieldModifier="public" x:Name="Ratebtnone" Grid.Row="0" Grid.Column="0" CornerRadius="22" Margin="2"  BackgroundColor="#00ffffff"  Clicked="Ratebtn1_Clicked" VerticalOptions="Center" Source="Frustated.png" />
+                                                <ImageButton  x:FieldModifier="public" x:Name="Ratebtntwo" Grid.Row="0" Grid.Column="1" CornerRadius="22" Margin="2"  BackgroundColor="#00ffffff"  Clicked="Ratebtntwo_Clicked" VerticalOptions="Center"  Source="Sad.png"/>
+                                                <ImageButton  x:FieldModifier="public" x:Name="RatebtnThird" Grid.Row="0" Grid.Column="2" CornerRadius="22" Margin="2"  BackgroundColor="#00ffffff"  Clicked="RatebtnThird_Clicked" VerticalOptions="Center"  Source="Neutral.png"/>
+                                                <ImageButton  x:FieldModifier="public" x:Name="RatebtnFour" Grid.Row="0" Grid.Column="3" CornerRadius="22"  Margin="2"  BackgroundColor="#00ffffff"  Clicked="RatebtnFour_Clicked" VerticalOptions="Center" Source="Happy.png"/>
+                                                <ImageButton  x:FieldModifier="public" x:Name="RatebtnFive" Grid.Row="0" Grid.Column="4" CornerRadius="22"  Margin="2" BackgroundColor="#00ffffff"  Clicked="RatebtnFive_Clicked" VerticalOptions="Center" Source="Joyfull.png"/>
+                                                <Image Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" HeightRequest="10" Source="Emotionmeter.png"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Aspect="AspectFill"/>
+
                                             </Grid>
-                                                 
+
                                         </StackLayout>
                                     </ViewCell>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
-                    </ListView>
-                    <StackLayout Grid.Row="2" Grid.Column="0" >
-                            <Label Text="{Binding victimcheck.title}" Margin="12,0,12,2" FontFamily="Source Sans Pro" TextColor="#2B92FC"  FontAttributes="Bold" FontSize="15" ></Label>
-                            <Label Text="{Binding victimcheck.que}" Margin="12,0,12,0" FontFamily="Source Sans Pro" TextColor="#000000"  FontSize="18" ></Label>
+                        </ListView>
+                        <StackLayout Grid.Row="2" Grid.Column="0" >
+                            <Label Text="{Binding victimcheck.title}" Margin="12,0,12,2" FontFamily="Source Sans Pro" TextColor="#2B92FC"  FontAttributes="Bold" FontSize="15" />
+                            <Label Text="{Binding victimcheck.que}" Margin="12,0,12,0" FontFamily="Source Sans Pro" TextColor="#000000"  FontSize="18" />
                             <Grid Margin="5">
-                                <Grid.RowDefinitions><RowDefinition Height="25"/> </Grid.RowDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="25"/>
+                                </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="30"/>
-                                     <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="30"/>
+                                    <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <CheckBox x:Name="YescheckBox" Grid.Row="0" Grid.Column="0" Color="#4C4C4C" CheckedChanged="YescheckBox_CheckedChanged" ></CheckBox>
-                                 <Label Grid.Row="0" Grid.Column="1" Text="Yes" FontFamily="Source Sans Pro"  TextColor="#4C4C4C" FontSize="16" VerticalTextAlignment="Center" ></Label>
-                           </Grid>
+                                <CheckBox x:Name="YescheckBox" Grid.Row="0" Grid.Column="0" Color="#4C4C4C" CheckedChanged="YescheckBox_CheckedChanged" />
+                                <Label Grid.Row="0" Grid.Column="1" Text="Yes" FontFamily="Source Sans Pro"  TextColor="#4C4C4C" FontSize="16" VerticalTextAlignment="Center" />
+                            </Grid>
                             <Grid Margin="5">
-                                 <Grid.RowDefinitions><RowDefinition Height="25"/> </Grid.RowDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="25"/>
+                                </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                     <ColumnDefinition Width="30"/>
-                                     <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="30"/>
+                                    <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
                                 <CheckBox x:Name="NocheckBox" Grid.Row="0" Grid.Column="0" Color="#4C4C4C" CheckedChanged="NocheckBox_CheckedChanged" ></CheckBox>
-                                 <Label Grid.Row="0" Grid.Column="1" Text="No" FontFamily="Source Sans Pro" TextColor="#4C4C4C" FontSize="16" VerticalTextAlignment="Center" ></Label>
-                           </Grid>
-                    </StackLayout>
-                      <StackLayout Grid.Row="3" Grid.Column="0" >
-                            <Label Text="Share your experience at this location both good and bad." Margin="12,20,12,2" FontFamily="Source Sans Pro" TextColor="#2B92FC"  FontAttributes="Bold" FontSize="14" ></Label>
+                                <Label Grid.Row="0" Grid.Column="1" Text="No" FontFamily="Source Sans Pro" TextColor="#4C4C4C" FontSize="16" VerticalTextAlignment="Center" />
+                            </Grid>
+                        </StackLayout>
+                        <StackLayout Grid.Row="3" Grid.Column="0" >
+                            <Label Text="Share your experience at this location both good and bad." Margin="12,20,12,2" FontFamily="Source Sans Pro" TextColor="#2B92FC"  FontAttributes="Bold" FontSize="14" />
                             <Frame Margin="10,10,10,2" BorderColor="LightGray" IsClippedToBounds="True" CornerRadius="5" HasShadow="False">
                                 <render:CustomEntryEditor Keyboard="Chat" Margin="-10" x:Name="commentEntrytxt" Placeholder="Enter you comment here." PlaceholderColor="#959595"/>
                             </Frame>
-                    </StackLayout>
-             
-                </Grid>
-            </Frame>
-            <Button x:Name="Submit_allanswers" Margin="22,0,22,10" Clicked="Submit_allanswers_Clicked" BackgroundColor="#0066FF" Text="Submit Rating" FontSize="18" TextColor="#ffffff" FontAttributes="Bold" HeightRequest="62" CornerRadius="31"/>
-         </StackLayout>
+                        </StackLayout>
+
+                    </Grid>
+                </Frame>
+                <Button x:Name="Submit_allanswers" Margin="22,0,22,10" Clicked="Submit_allanswers_Clicked" BackgroundColor="#0066FF" Text="Submit Rating" FontSize="18" TextColor="#ffffff" FontAttributes="Bold" HeightRequest="62" CornerRadius="31"/>
+            </StackLayout>
         </ScrollView>
-   </StackLayout>
+    </StackLayout>
 </ContentPage>
 

@@ -16,13 +16,13 @@ using System.Collections.ObjectModel;
 
 namespace Bewize.ViewModels
 {
-	public class MyratingsListVM : BaseViewModel
-	{
+    public class MyratingsListVM : BaseViewModel
+    {
         CancellationTokenSource cts;
         public ClosebtnCommand Closebtn_Command { get; set; }
 
-        private List<MyRatingsDetails> _MyRatingsDetailslist { get; set; }
-        public List<MyRatingsDetails> MyRatingsDetailsList
+        private ObservableCollection<MyRatingsDetails> _MyRatingsDetailslist { get; set; }
+        public ObservableCollection<MyRatingsDetails> MyRatingsDetailsList
         {
             get { return _MyRatingsDetailslist; }
             set
@@ -32,8 +32,8 @@ namespace Bewize.ViewModels
             }
         }
 
-        private List<Submittedrating> _MyRatingsDetails { get; set; }
-        public List<Submittedrating> MyRatingsDetails
+        private ObservableCollection<Submittedrating> _MyRatingsDetails { get; set; }
+        public ObservableCollection<Submittedrating> MyRatingsDetails
         {
             get { return _MyRatingsDetails; }
             set
@@ -47,18 +47,19 @@ namespace Bewize.ViewModels
         public MyratingsListVM()
         {
             Closebtn_Command = new ClosebtnCommand(this);
-           
+
             this.GetMyRatingsDetailsFromServer();
         }
 
-        public async Task<string> getLocationtitleAsync(string lat, string lon) {
+        //public async Task<string> getLocationtitleAsync(string lat, string lon)
+        //{
 
-            Geocoder geoCoder = new Geocoder();
-            Position position = new Position(Convert.ToDouble(lat), Convert.ToDouble(lon));
-            IEnumerable<string> possibleAddresses = await geoCoder.GetAddressesForPositionAsync(position);
-            string address = possibleAddresses.FirstOrDefault();
-            return address;
-        }
+        //    Geocoder geoCoder = new Geocoder();
+        //    Position position = new Position(Convert.ToDouble(lat), Convert.ToDouble(lon));
+        //    IEnumerable<string> possibleAddresses = await geoCoder.GetAddressesForPositionAsync(position);
+        //    string address = possibleAddresses.FirstOrDefault();
+        //    return address;
+        //}
 
         public class ClosebtnCommand : ICommand
         {
@@ -83,9 +84,9 @@ namespace Bewize.ViewModels
         }
         public void MoveBackwardScreen()
         {
-           
-                App.Current.MainPage.Navigation.PushAsync(new Views.Home.MyHomepage());
-           
+
+            App.Current.MainPage.Navigation.PushAsync(new Views.Home.MyHomepage());
+
         }
 
         public void MoveForwardtoViewdetails()
@@ -106,20 +107,54 @@ namespace Bewize.ViewModels
 
                 if (res.success)
                 {
-                    this.MyRatingsDetailsList = new List<MyRatingsDetails>();
-                    this.MyRatingsDetails = new List<Submittedrating>();
+                    this.MyRatingsDetailsList = new ObservableCollection<MyRatingsDetails>();
+                    this.MyRatingsDetails = new ObservableCollection<Submittedrating>();
                     string obj = JsonConvert.SerializeObject(res.data);
-                    var list = JsonConvert.DeserializeObject<List<MyRatingsDetails>>(obj);
-                    foreach (MyRatingsDetails submittedrating in list) {
-                        if (submittedrating.name == "" || submittedrating.name == null)
+                    var list = JsonConvert.DeserializeObject<ObservableCollection<MyRatingsDetails>>(obj);
+                    foreach (MyRatingsDetails submittedrating in list)
+                    {
+                        if (string.IsNullOrEmpty(submittedrating.name))
                         {
                             submittedrating.name = "Data not available!";
                         }
+
+                        submittedrating.address = await UtilityHelper.GetAddressFromLatLong(submittedrating.latitude, submittedrating.longitude);
+
+                        submittedrating.showUpdatedAt = UtilityHelper.TimeDifference(submittedrating.updatedAt);
+
                         if (submittedrating.my_ratings != null)
                         {
+
+                            foreach (var item in submittedrating.my_ratings)
+                            {
+                                if (item.rating == "5")
+                                {
+                                    item.imageName = "Joyfull.png";
+                                }
+                                else if (item.rating == "4")
+                                {
+                                    item.imageName = "Happy.png";
+                                }
+                                else
+                                if (item.rating == "3")
+                                {
+                                    item.imageName = "Neutral.png";
+                                }
+                                else
+                                if (item.rating == "2")
+                                {
+                                    item.imageName = "Sad.png";
+                                }
+                                else
+                                {
+                                    item.imageName = "Frustated.png";
+                                }
+                            }
+
                             SubmittedratingList mylist = new SubmittedratingList();
                             mylist.my_ratings = submittedrating.my_ratings;
                             this.MyRatingsDetails = mylist.my_ratings;
+
                         }
                     }
                     this.MyRatingsDetailsList = list;

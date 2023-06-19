@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Bewize.HelperResource;
 using Bewize.Models;
 using Bewize.ViewModels;
 using Xamarin.Essentials;
@@ -65,9 +66,10 @@ namespace Bewize.Views.Home
              {
                 try
                 {
-                    Position currentposition = new Position(Convert.ToDouble(Latitude), Convert.ToDouble(Longitude));
-                    IEnumerable<string> possibleAddresses = await geoCoder.GetAddressesForPositionAsync(currentposition);
-                    string address = possibleAddresses.FirstOrDefault();
+                    //Position currentposition = new Position(Convert.ToDouble(Latitude), Convert.ToDouble(Longitude));
+                    //IEnumerable<string> possibleAddresses = await geoCoder.GetAddressesForPositionAsync(currentposition);
+                    //string address = await UtilityHelper.GetAddressFromLatLong(Latitude, Longitude);
+
                     address_lbl.Text = details.NAME;
                     map = new Xamarin.Forms.GoogleMaps.Map()
                     {

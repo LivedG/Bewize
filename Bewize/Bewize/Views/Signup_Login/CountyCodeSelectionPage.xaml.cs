@@ -47,15 +47,22 @@ namespace Bewize.Views.Signup_Login
 
         void SearchBar_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
         {
-            
-            if (string.IsNullOrEmpty(e.NewTextValue))
-            {
-                Countrylist.ItemsSource = C_VM.CountryList;
-            }
 
-            else
+            try
             {
-                Countrylist.ItemsSource = C_VM.CountryList.Where(x => x.name.ToLower().StartsWith(e.NewTextValue.ToLower()));
+                if (string.IsNullOrEmpty(e.NewTextValue))
+                {
+                    Countrylist.ItemsSource = C_VM.CountryList;
+                }
+
+                else
+                {
+                    Countrylist.ItemsSource = C_VM.CountryList.Where(x => x.name.ToLower().StartsWith(e.NewTextValue.ToLower()));
+                }
+            }
+            catch (Exception ex)
+            {
+
             }
         }
         

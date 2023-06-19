@@ -15,9 +15,9 @@ using TrackingSample.Helpers;
 
 namespace Bewize.ViewModels
 {
-	public class Homepagewith_zipcodeVM:BaseViewModel
-	{
-        public  GetSelectedlocationdetailsCommand getselected_locationdetailscmd { get; set; }
+    public class Homepagewith_zipcodeVM : BaseViewModel
+    {
+        public GetSelectedlocationdetailsCommand getselected_locationdetailscmd { get; set; }
         public RateLocationCommand setLocationratingcmd { get; set; }
         IGoogleMapsApiServices googleMapsApi = new GoogleMapsApiService();
 
@@ -43,8 +43,8 @@ namespace Bewize.ViewModels
             }
         }
 
-        public List<LocationScoreDetails>  _Locationscoredetails { get; set; }
-        public List<LocationScoreDetails>   Locationscoredetails
+        public List<LocationScoreDetails> _Locationscoredetails { get; set; }
+        public List<LocationScoreDetails> Locationscoredetails
         {
             get { return _Locationscoredetails; }
             set
@@ -139,7 +139,7 @@ namespace Bewize.ViewModels
 
 
         public Homepagewith_zipcodeVM()
-		{
+        {
             getselected_locationdetailscmd = new GetSelectedlocationdetailsCommand(this);
             setLocationratingcmd = new RateLocationCommand(this);
             GetPlacesCommand = new Command<string>(async (param) => await GetPlacesByName(param));
@@ -155,9 +155,9 @@ namespace Bewize.ViewModels
 
         public async Task<List<LocationScoreDetails>> getlocationdetailswithScore()
         {
-            var Longitude = Preferences.Get("Longitude", "");
-            var Latitude =  Preferences.Get("Latitude", "");
-           
+            var Longitude = "-86.4863";// Preferences.Get("Longitude", "");
+            var Latitude = "32.4643";// Preferences.Get("Latitude", "");
+
             if (Longitude != "" && Latitude != "")
             {
                 try
@@ -199,13 +199,15 @@ namespace Bewize.ViewModels
 
                 }
             }
-            else {
+            else
+            {
                 await App.Current.MainPage.DisplayAlert("", "Location score details not available,you may rate it now!", "OK");
             }
             return this.Locationscoredetails;
         }
 
-        public async void showLocationdetails(LocationScoreDetails details) {
+        public async void showLocationdetails(LocationScoreDetails details)
+        {
             await App.Current.MainPage.Navigation.PushAsync(new Views.Home.SelectedLocationFullDetails(details));
         }
 
@@ -219,9 +221,10 @@ namespace Bewize.ViewModels
                 if (userList.Count > 0)
                 {
                     this.Profiledetails = userList.Last();
-                 
+
                 }
-                else {
+                else
+                {
                     await App.Current.MainPage.DisplayAlert("", "Please fill your acccount details for better experience.", "OK");
                 }
             }

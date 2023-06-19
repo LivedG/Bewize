@@ -38,13 +38,15 @@ namespace Bewize.Models
         public String latitude { get; set; }
         public String longitude { get; set; }
         public String name { get; set; }
+        public String address { get; set; }
         public String updatedAt { get; set; }
-        public List<Submittedrating> my_ratings { get; set; }
+        public String showUpdatedAt { get; set; }
+        public ObservableCollection<Submittedrating> my_ratings { get; set; }
     }
 
     public class SubmittedratingList
     {
-        public List<Submittedrating> my_ratings { get; set; }
+        public ObservableCollection<Submittedrating> my_ratings { get; set; }
         
     }
 
@@ -52,6 +54,7 @@ namespace Bewize.Models
     {
         public String title { get; set; }
         public String rating { get; set; }
+        public String imageName { get; set; }
         public String crime_type { get; set; }
 
     }
