@@ -8,6 +8,7 @@ using Xamarin.Essentials;
 using Xamarin.Forms.Internals;
 using System.Linq;
 using Xamarin.Forms.GoogleMaps;
+using Bewize.HelperResource;
 
 namespace Bewize.Views.MyRating
 {
@@ -48,10 +49,11 @@ namespace Bewize.Views.MyRating
             {
                 try
                 {
-                    Position currentposition = new Position(Convert.ToDouble(Latitude), Convert.ToDouble(Longitude));
-                    IEnumerable<string> possibleAddresses = await geoCoder.GetAddressesForPositionAsync(currentposition);
-                    string address = possibleAddresses.FirstOrDefault();
-                    Placeaddresslbl.Text = address;
+                    //Position currentposition = new Position(Convert.ToDouble(Latitude), Convert.ToDouble(Longitude));
+                    //IEnumerable<string> possibleAddresses = await geoCoder.GetAddressesForPositionAsync(currentposition);
+                    //string address = possibleAddresses.FirstOrDefault();
+                    Placeaddresslbl.Text =  await UtilityHelper.GetAddressFromLatLong(Latitude, Longitude);
+
                     map = new Xamarin.Forms.GoogleMaps.Map()
                     {
                         Margin = new Thickness(2, 2, 2, 2),

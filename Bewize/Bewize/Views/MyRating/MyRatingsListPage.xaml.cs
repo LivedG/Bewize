@@ -39,7 +39,12 @@ namespace Bewize.Views.MyRating
             VM.MoveForwardtoViewdetails();
         }
 
-        
+        // View Tapped
+        void TapGestureRecognizer_Tapped(System.Object sender, System.EventArgs e)
+        {
+            VM.MoveForwardtoViewdetails();
+        }
+
     }
 }
 

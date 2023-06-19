@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using SQLite;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -26,14 +27,14 @@ namespace Bewize.HelperResource
             {
                 string content = string.Empty;
                 var httpClient = new HttpClient();
-             
+
                 AuthenticationHeaderValue authHeader;
 
                 json = json.Replace(@"\", String.Empty);
 
 
                 HttpResponseMessage httpResponse = null;
-                if (String.IsNullOrWhiteSpace(json) )
+                if (String.IsNullOrWhiteSpace(json))
                 {
 
                     if (url.Contains("getuserdtlbyid") || url.Contains("getcrimetype"))
@@ -41,7 +42,7 @@ namespace Bewize.HelperResource
 
                         if (Preferences.ContainsKey("Token"))
                         {
-                             var token = Preferences.Get("Token", "");
+                            var token = Preferences.Get("Token", "");
 
                             authHeader = new AuthenticationHeaderValue("Bearer", (string)token);
                             httpClient.DefaultRequestHeaders.Authorization = authHeader;
@@ -52,13 +53,14 @@ namespace Bewize.HelperResource
                         content = await httpResponse.Content.ReadAsStringAsync();
                         res = JsonConvert.DeserializeObject<APIResponse>(content);
 
-                    
+
                     }
                     else
                     {
                         if (Preferences.ContainsKey("Token"))
                         {
                             var token = Preferences.Get("Token", "");
+                            Debug.WriteLine("token ----> ", token);
 
                             authHeader = new AuthenticationHeaderValue("Bearer", (string)token);
                             httpClient.DefaultRequestHeaders.Authorization = authHeader;
@@ -97,42 +99,45 @@ namespace Bewize.HelperResource
 
                     }
                 }
-                if (res.statusCode == 401) {
+                if (res.statusCode == 401)
+                {
                     FileInfo fi = new FileInfo(App.DatabaseLocation);
-                        try
+                    try
+                    {
+                        if (fi.Exists)
                         {
-                            if (fi.Exists)
-                            {
-                                SQLiteConnection connection = new SQLiteConnection("Data Source=" + App.DatabaseLocation + ";");
-                                connection.Close();
-                                GC.Collect();
-                                GC.WaitForPendingFinalizers();
-                                fi.Delete();
-                             }
-                          // Application.Current.Properties.Clear();
-                           App.Current.MainPage = new NavigationPage(new Views.Signup_Login.MainPage_());
-                           App.Current.MainPage.Navigation.PopToRootAsync();
-                        }
-                        catch (Exception ex)
-                        {
+                            SQLiteConnection connection = new SQLiteConnection("Data Source=" + App.DatabaseLocation + ";");
+                            connection.Close();
+                            GC.Collect();
+                            GC.WaitForPendingFinalizers();
                             fi.Delete();
                         }
-                      
-                    
-                }
-                else { 
-                if (httpResponse.IsSuccessStatusCode)
-                {
-                    content = await httpResponse.Content.ReadAsStringAsync();
-                    res = JsonConvert.DeserializeObject<APIResponse>(content);
+                        // Application.Current.Properties.Clear();
+                        App.Current.MainPage = new NavigationPage(new Views.Signup_Login.MainPage_());
+                        App.Current.MainPage.Navigation.PopToRootAsync();
+                    }
+                    catch (Exception ex)
+                    {
+                        fi.Delete();
+                    }
+
+
                 }
                 else
                 {
-                    res.response = null;
-                   // res.message = "Invalid Response";
-                    res.success = false;
+                    if (httpResponse.IsSuccessStatusCode)
+                    {
+                        content = await httpResponse.Content.ReadAsStringAsync();
+                        res = JsonConvert.DeserializeObject<APIResponse>(content);
+                    }
+                    else
+                    {
+                        res.response = null;
+                        // res.message = "Invalid Response";
+                        res.success = false;
+                    }
                 }
-              }
+                Debug.WriteLine("Res ----> ", res.response);
                 return res;
             }
             catch (Exception ex)
@@ -144,7 +149,8 @@ namespace Bewize.HelperResource
             }
         }
 
-        public async Task<APIResponse> Multiforn_callAPI(string url, byte[] file_bytes) {
+        public async Task<APIResponse> Multiforn_callAPI(string url, byte[] file_bytes)
+        {
 
             APIResponse res = new APIResponse();
             string content = string.Empty;
@@ -159,7 +165,7 @@ namespace Bewize.HelperResource
             {
                 MultipartFormDataContent form = new MultipartFormDataContent();
 
-             
+
                 form.Add(new ByteArrayContent(file_bytes, 0, file_bytes.Length), "profile_img", "profile_img.jpg");
                 if (Preferences.ContainsKey("Token"))
                 {
@@ -174,8 +180,8 @@ namespace Bewize.HelperResource
 
                 response.EnsureSuccessStatusCode();
                 httpClient.Dispose();
-               
-                
+
+
                 if (response.IsSuccessStatusCode)
                 {
                     content = response.Content.ReadAsStringAsync().Result;

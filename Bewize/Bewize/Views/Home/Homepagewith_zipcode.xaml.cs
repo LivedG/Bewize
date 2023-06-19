@@ -13,17 +13,17 @@ using Position = Xamarin.Forms.GoogleMaps.Position;
 using Lottie.Forms;
 
 namespace Bewize.Views.Home
-{	
-	public partial class Homepagewith_zipcode : ContentPage
-	{
-		Homepagewith_zipcodeVM vm;
+{
+    public partial class Homepagewith_zipcode : ContentPage
+    {
+        Homepagewith_zipcodeVM vm;
         List<LocationScoreDetails> location_details;
         Xamarin.Forms.GoogleMaps.Map map;
         Geocoder geoCoder = new Geocoder();
 
         public Homepagewith_zipcode()
-		{
-			InitializeComponent ();
+        {
+            InitializeComponent();
             vm = new Homepagewith_zipcodeVM();
             BindingContext = vm;
         }
@@ -39,29 +39,34 @@ namespace Bewize.Views.Home
                 this.setupProfilepicture(vm.Profiledetails.profile_img);
             }
             ReloadLocationMap();
-           this.checklocationScoreavailableorNot();
+            this.checklocationScoreavailableorNot();
 
         }
 
-        void checklocationScoreavailableorNot() {
+        void checklocationScoreavailableorNot()
+        {
             //if (this.location_details.NAME != null && this.location_details.NAME != "")   {
             //    RatingDisplayview.IsVisible = true;
             //}
             //else {
-                RatingDisplayview.IsVisible = false;
-           // }
+            RatingDisplayview.IsVisible = false;
+            // }
         }
         async void ReloadLocationMap()
         {
-            var Longitude = Preferences.Get("Longitude", "");
-            var Latitude = Preferences.Get("Latitude", "");
+            //"LATITUDE": "32.4643",
+            //"LONGITUDE": "-86.4863",
+
+
+            var Longitude = "-86.4863"; // Preferences.Get("Longitude", "");
+            var Latitude = "32.4643";// Preferences.Get("Latitude", "");
             if (Longitude != null && Latitude != null)
             {
                 try
                 {
-                    Position currentposition = new Position(Convert.ToDouble(Latitude), Convert.ToDouble(Longitude));
-                    IEnumerable<string> possibleAddresses = await geoCoder.GetAddressesForPositionAsync(currentposition);
-                    string address = possibleAddresses.FirstOrDefault();
+                    //Position currentposition = new Position(Convert.ToDouble(Latitude), Convert.ToDouble(Longitude));
+                    //IEnumerable<string> possibleAddresses = await geoCoder.GetAddressesForPositionAsync(currentposition);
+                    string address = await UtilityHelper.GetAddressFromLatLong(Latitude, Longitude);
                     locationlbl.Text = address;
                     map = new Xamarin.Forms.GoogleMaps.Map()
                     {
@@ -74,9 +79,10 @@ namespace Bewize.Views.Home
                         IsEnabled = true
                     };
                     Xamarin.Forms.GoogleMaps.Position position = new Xamarin.Forms.GoogleMaps.Position(Convert.ToDouble(Latitude), Convert.ToDouble(Longitude));
-                    Xamarin.Forms.GoogleMaps.MapSpan mapSpan = new Xamarin.Forms.GoogleMaps.MapSpan(position, 0.01, 0.01);
+                    Xamarin.Forms.GoogleMaps.MapSpan mapSpan = new Xamarin.Forms.GoogleMaps.MapSpan(position, 0.05, 0.05);
                     map.MoveToRegion(mapSpan);
-                    StackLayout stackLayout = new StackLayout()  {
+                    StackLayout stackLayout = new StackLayout()
+                    {
                         HorizontalOptions = LayoutOptions.FillAndExpand,
                         VerticalOptions = LayoutOptions.FillAndExpand,
                         BackgroundColor = Color.Transparent,
@@ -109,9 +115,11 @@ namespace Bewize.Views.Home
             }
         }
 
-    
-        void setupPinLocation() {
-            if (this.location_details.Count > 0) {
+
+        void setupPinLocation()
+        {
+            if (this.location_details.Count > 0)
+            {
 
                 foreach (LocationScoreDetails location in this.location_details)
                 {
@@ -121,8 +129,8 @@ namespace Bewize.Views.Home
                         Position = new Xamarin.Forms.GoogleMaps.Position(Convert.ToDouble(location.LATITUDE), Convert.ToDouble(location.LONGITUDE)),
                         Icon = BitmapDescriptorFactory.FromBundle(location.CRMCYTOTC),
                         Type = Xamarin.Forms.GoogleMaps.PinType.Place,
-                        
-                        
+
+
                     };
                     positionpin.Clicked += (sender, args) =>
                     {
@@ -133,7 +141,7 @@ namespace Bewize.Views.Home
                     map.Pins.Add(positionpin);
                 }
             }
-           // vm.isLoaderVisible = false;
+            // vm.isLoaderVisible = false;
         }
     }
 }
