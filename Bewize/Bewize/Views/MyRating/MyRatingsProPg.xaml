@@ -69,19 +69,47 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Row="0" Margin="12,0,12,0" VerticalTextAlignment="Center" Grid.Column="0" Text="Questions" FontFamily="Source Sans Pro" TextColor="#000000"  FontAttributes="Bold" FontSize="22"/>
-                        <ListView Grid.Row="1"  Grid.Column="0" RowHeight="150" SeparatorVisibility="None" x:FieldModifier="public" x:Name="questionsList" ItemsSource="{Binding RateQuestionslist}" >
+                        <Label x:Name="tstLbl" Grid.Row="0" Margin="12,0,12,0" VerticalTextAlignment="Center" Grid.Column="0" Text="Questions" FontFamily="Source Sans Pro" TextColor="#000000"  FontAttributes="Bold" FontSize="22"/>
+
+
+                        <ListView Grid.Row="1"  Grid.Column="0" RowHeight="150" SeparatorVisibility="None" x:Name="questionsList" ItemsSource="{Binding RateQuestionslist}" >
 
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
                                         <StackLayout BackgroundColor="#ffffff">
+                                            <Label  x:Name="Questiontypelbl" Text="{Binding title}" Margin="12,0,12,0" FontFamily="Source Sans Pro" TextColor="#2B92FC"  FontSize="14" />
+                                            <Label x:Name="QuestionDesclbl" Text="{Binding que}" Margin="12,0,12,0" FontFamily="Source Sans Pro" TextColor="#000000"  FontSize="18" />
 
-                                            <Label  x:Name="Questiontypelbl" Text="{Binding title}" Margin="12,0,12,0" FontFamily="Source Sans Pro" TextColor="#2B92FC"  FontSize="14" ></Label>
-                                            <Label x:Name="QuestionDesclbl" Text="{Binding que}" Margin="12,0,12,0" FontFamily="Source Sans Pro" TextColor="#000000"  FontSize="18" ></Label>
-                                            <Grid x:Name="Parentgrid">
+                                            <StackLayout BindableLayout.ItemsSource="{Binding ratings}"
+                                                         Orientation="Horizontal" >
+                                                <BindableLayout.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <ImageButton   x:Name="Ratebtnone" 
+                                                                       CornerRadius="22" Margin="2"
+                                                                       BackgroundColor="{Binding BGColor}"
+                                                                       HeightRequest="50"
+                                                                       Clicked="Ratebtn1_Clicked"
+                                                                       Command="{Binding Source={StaticResource VM},Path=RateIconClicked}"
+                                                                       CommandParameter="{Binding .}"
+                                                                       VerticalOptions="Center"
+                                                                       Source="{Binding image}"  >
+                                                            <!--<ImageButton.Triggers>
+                                                                <DataTrigger TargetType="ImageButton"
+                                                                     Binding="{Binding currentSelectedAns}" Value="1">
+                                                                    <Setter Property="Source" Value="Joyfull.png" />
+                                                                    <Setter Property="BorderColor" Value="#80FFE8EC" />
+                                                                    <Setter Property="BorderWidth" Value="0.2" />
+                                                                </DataTrigger>
+                                                            </ImageButton.Triggers>-->
+                                                        </ImageButton>
+                                                    </DataTemplate>
+                                                </BindableLayout.ItemTemplate>
+                                            </StackLayout>
+
+                                            <!--<Grid x:Name="Parentgrid">
                                                 <Grid.RowDefinitions>
-                                                    <RowDefinition Height="50" x:Uid="row1" />
+                                                    <RowDefinition Height="50"  />
                                                     <RowDefinition Height="15"/>
                                                 </Grid.RowDefinitions>
                                                 <Grid.ColumnDefinitions>
@@ -92,20 +120,30 @@
                                                     <ColumnDefinition Width="*" />
                                                 </Grid.ColumnDefinitions>
 
-                                                <ImageButton  x:FieldModifier="public" x:Name="Ratebtnone" Grid.Row="0" Grid.Column="0" CornerRadius="22" Margin="2"  BackgroundColor="#00ffffff"  Clicked="Ratebtn1_Clicked" VerticalOptions="Center" Source="Frustated.png" />
-                                                <ImageButton  x:FieldModifier="public" x:Name="Ratebtntwo" Grid.Row="0" Grid.Column="1" CornerRadius="22" Margin="2"  BackgroundColor="#00ffffff"  Clicked="Ratebtntwo_Clicked" VerticalOptions="Center"  Source="Sad.png"/>
+                                                <ImageButton   x:Name="Ratebtnone" Grid.Row="0" Grid.Column="0" CornerRadius="22" Margin="2"  BackgroundColor="#00ffffff"  Clicked="Ratebtn1_Clicked" VerticalOptions="Center" Source="{Binding currentSelectedAns}" >
+                                                    <ImageButton.Triggers>
+                                                        <DataTrigger TargetType="ImageButton"
+                                                                     Binding="{Binding currentSelectedAns}" Value="1">
+                                                            <Setter Property="Source" Value="Joyfull.png" />
+                                                            <Setter Property="BorderColor" Value="#80FFE8EC" />
+                                                            <Setter Property="BorderWidth" Value="0.2" />
+                                                        </DataTrigger>
+                                                    </ImageButton.Triggers>
+                                                </ImageButton>
+                                                <ImageButton   x:Name="Ratebtntwo" Grid.Row="0" Grid.Column="1" CornerRadius="22" Margin="2"  BackgroundColor="#00ffffff"  Clicked="Ratebtntwo_Clicked" VerticalOptions="Center"  Source="Sad.png"/>
                                                 <ImageButton  x:FieldModifier="public" x:Name="RatebtnThird" Grid.Row="0" Grid.Column="2" CornerRadius="22" Margin="2"  BackgroundColor="#00ffffff"  Clicked="RatebtnThird_Clicked" VerticalOptions="Center"  Source="Neutral.png"/>
                                                 <ImageButton  x:FieldModifier="public" x:Name="RatebtnFour" Grid.Row="0" Grid.Column="3" CornerRadius="22"  Margin="2"  BackgroundColor="#00ffffff"  Clicked="RatebtnFour_Clicked" VerticalOptions="Center" Source="Happy.png"/>
                                                 <ImageButton  x:FieldModifier="public" x:Name="RatebtnFive" Grid.Row="0" Grid.Column="4" CornerRadius="22"  Margin="2" BackgroundColor="#00ffffff"  Clicked="RatebtnFive_Clicked" VerticalOptions="Center" Source="Joyfull.png"/>
                                                 <Image Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" HeightRequest="10" Source="Emotionmeter.png"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Aspect="AspectFill"/>
 
-                                            </Grid>
+                                            </Grid>-->
 
                                         </StackLayout>
                                     </ViewCell>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
+
                         <StackLayout Grid.Row="2" Grid.Column="0" >
                             <Label Text="{Binding victimcheck.title}" Margin="12,0,12,2" FontFamily="Source Sans Pro" TextColor="#2B92FC"  FontAttributes="Bold" FontSize="15" />
                             <Label Text="{Binding victimcheck.que}" Margin="12,0,12,0" FontFamily="Source Sans Pro" TextColor="#000000"  FontSize="18" />
@@ -132,6 +170,7 @@
                                 <Label Grid.Row="0" Grid.Column="1" Text="No" FontFamily="Source Sans Pro" TextColor="#4C4C4C" FontSize="16" VerticalTextAlignment="Center" />
                             </Grid>
                         </StackLayout>
+
                         <StackLayout Grid.Row="3" Grid.Column="0" >
                             <Label Text="Share your experience at this location both good and bad." Margin="12,20,12,2" FontFamily="Source Sans Pro" TextColor="#2B92FC"  FontAttributes="Bold" FontSize="14" />
                             <Frame Margin="10,10,10,2" BorderColor="LightGray" IsClippedToBounds="True" CornerRadius="5" HasShadow="False">

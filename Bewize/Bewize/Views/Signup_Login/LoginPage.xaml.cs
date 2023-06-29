@@ -45,7 +45,7 @@ namespace Bewize.Views
                  else
                   {
                     var UsersreqPara = new Users_reqPara();
-                    UsersreqPara.email = Loginidtxt.Text.ToLower();
+                    UsersreqPara.email = Loginidtxt.Text;
                     UsersreqPara.password = pwdtxt.Text;
                     vm.MoveForwardToSigninProcessAsync(userdetails: UsersreqPara);
                   }

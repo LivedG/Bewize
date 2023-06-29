@@ -5,15 +5,15 @@
     x:Class="Bewize.Views.Home.MyHomepage" NavigationPage.HasNavigationBar="False" FlyoutLayoutBehavior="Popover"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" ios:Page.UseSafeArea="True">
 
-<FlyoutPage.Flyout >
-    <local:MenuPage x:Name="MenuPage">
-</local:MenuPage>
-</FlyoutPage.Flyout>
+    <FlyoutPage.Flyout >
+        <local:MenuPage x:Name="MenuPage">
+        </local:MenuPage>
+    </FlyoutPage.Flyout>
 
-<FlyoutPage.Detail>
-    <local:Homepagewith_zipcode  x:Name="Detailview">
-       
-    </local:Homepagewith_zipcode>
-</FlyoutPage.Detail>
+    <FlyoutPage.Detail>
+        <local:Homepagewith_zipcode  x:Name="Detailview">
+
+        </local:Homepagewith_zipcode>
+    </FlyoutPage.Detail>
 
 </FlyoutPage>

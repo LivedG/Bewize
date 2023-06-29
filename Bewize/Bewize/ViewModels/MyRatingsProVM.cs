@@ -8,12 +8,14 @@ using System.Windows.Input;
 using Xamarin.Forms.Internals;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace Bewize.ViewModels
 {
     public class MyRatingsProVM : BaseViewModel
     {
-        private string _message { get; set; }
+        private string _message;
         public string message
         {
             get { return _message; }
@@ -24,7 +26,7 @@ namespace Bewize.ViewModels
             }
         }
 
-        private int _Questionsectionheight { get; set; }
+        private int _Questionsectionheight;
         public int Questionsectionheight
         {
             get { return _Questionsectionheight; }
@@ -35,28 +37,29 @@ namespace Bewize.ViewModels
             }
         }
 
-        private List<Questionsdetails> _RateQuestionslist { get; set; }
-        public List<Questionsdetails> RateQuestionslist
+        private ObservableCollection<Questionsdetails> _RateQuestionslist;
+        public ObservableCollection<Questionsdetails> RateQuestionslist
         {
             get { return _RateQuestionslist; }
             set
             {
                 _RateQuestionslist = value;
-                OnPropertyChanged();
+                OnPropertyChanged(nameof(RateQuestionslist));
             }
         }
 
-        private Questionsdetails _victimcheck { get; set; }
+        private Questionsdetails _victimcheck;
         public Questionsdetails victimcheck
         {
             get { return _victimcheck; }
-            set {
+            set
+            {
                 _victimcheck = value;
                 OnPropertyChanged();
             }
         }
 
-        private Questionsdetails _userComment { get; set; }
+        private Questionsdetails _userComment;
         public Questionsdetails userComment
         {
             get { return _userComment; }
@@ -88,7 +91,6 @@ namespace Bewize.ViewModels
                 OnPropertyChanged();
             }
         }
-
 
         private int _RateThird { get; set; }
         public int RateThird
@@ -124,6 +126,7 @@ namespace Bewize.ViewModels
         }
 
         public Myratingpro_backbtnCommand backbtn_Command { get; set; }
+
         //public List<Answersdetails> Rates_ansdetails { get; set; }
         //public List<Answersdetails> victim_ansdetails { get; set; }
         //public List<Answersdetails> Commenttxt_ansdetails { get; set; }
@@ -131,20 +134,20 @@ namespace Bewize.ViewModels
         //public List<Questionsdetails> victim_questiondetails { get; set; }
         //public List<Questionsdetails> Commectsection_titledetails { get; set; }
 
+        public SubmitAnsList_reqPara SubmitAnswer_list;
 
 
         public MyRatingsProVM()
         {
             backbtn_Command = new Myratingpro_backbtnCommand(this);
+            //RateIconClicked = new RatingCommandClicked(this);
+
             //Rates_ansdetails = new List<Answersdetails>();
             //victim_ansdetails = new List<Answersdetails>();
             //Commenttxt_ansdetails = new List<Answersdetails>();
             //Rate_questionsdetails = new List<Questionsdetails>();
             //victim_questiondetails = new List<Questionsdetails>();
             //Commectsection_titledetails = new List<Questionsdetails>();
-
-
-
         }
 
 
@@ -154,7 +157,7 @@ namespace Bewize.ViewModels
         }
 
 
-            public async void getQuestionslistfromserver() 
+        public async void getQuestionslistfromserver()
         {
 
             try
@@ -169,8 +172,8 @@ namespace Bewize.ViewModels
                 request_para.longitude = Longitude;
                 request_para.latitude = Latitude;
                 //** get  questionlist by location data **** 
-                 APIResponse res = await httpHelper.callAPI(webURL, JsonConvert.SerializeObject(request_para));
-             
+                APIResponse res = await httpHelper.callAPI(webURL, JsonConvert.SerializeObject(request_para));
+
                 if (res.success)
                 {
                     List<Questionlistdetails> responselist;
@@ -183,8 +186,9 @@ namespace Bewize.ViewModels
                     var victim_ansdetails = responselist.Find(x => x._id == "checkbox").anser;
                     var Commenttxt_ansdetails = responselist.Find(x => x._id == "input").anser;
 
-                    if (responselist.Find(x => x._id == "radio").question.Count > 0) {
-                        this.RateQuestionslist = Rate_questionsdetails;
+                    if (responselist.Find(x => x._id == "radio").question.Count > 0)
+                    {
+                        RateQuestionslist = new ObservableCollection<Questionsdetails>(Rate_questionsdetails);
                         Questionsectionheight = 150 * this.RateQuestionslist.Count;
                         if (Rates_ansdetails.Count > 0)
                         {
@@ -199,11 +203,46 @@ namespace Bewize.ViewModels
                                             RateQuestionslist[j].ans = Rates_ansdetails[I].ans;
                                         }
                                     }
+
+                                    RateQuestionslist[j].ratings.ForEach(x =>
+                                    {
+                                        x._id = RateQuestionslist[j]._id;
+                                    });
+
                                 }
                             }
+
+                            for (int j = 0; j < RateQuestionslist.Count; j++)
+                            {
+                                for (int i = 0; i < RateQuestionslist[j].ratings.Count; i++)
+                                {
+                                    if (RateQuestionslist[j].ratings[i]._id == RateQuestionslist[j]._id)
+                                    {
+                                        RateQuestionslist[j].ratings[i].BGColor = RateQuestionslist[j].ratings[i].currentSelectedAns == RateQuestionslist[j].ans ? MyRatingsProPg.selectedColor : MyRatingsProPg.unSelectedColor;
+                                    }
+                                }
+                            }
+
+                        }
+
+                        // TO add the Ans to submit list 
+                        for (int j = 0; j < RateQuestionslist.Count; j++)
+                        {
+                            var reqPara = new SubmitAns_reqPara();
+                            reqPara.ans = RateQuestionslist[j].ans;
+                            reqPara.que = RateQuestionslist[j]._id;
+                            reqPara.longitude = Longitude;
+                            reqPara.latitude = Latitude;
+                            reqPara.crime_type = RateQuestionslist[j].crime_type;
+                            reqPara.createdby = "";
+                            reqPara.updatedby = "";
+
+                            this.SubmitAnswer_list.ansList.Add(reqPara);
                         }
                     }
-                    if (victim_questiondetails.Count > 0) {
+
+                    if (victim_questiondetails.Count > 0)
+                    {
                         this.victimcheck = victim_questiondetails[0];
                     }
                     if (Commectsection_titledetails.Count > 0)
@@ -241,7 +280,7 @@ namespace Bewize.ViewModels
                 string webURL = APIHelper.SubmitAns;
                 HttpHelper httpHelper = new HttpHelper();
 
-                
+
                 APIResponse res = await httpHelper.callAPI(webURL, JsonConvert.SerializeObject(Requestpara.ansList));
 
                 if (res.success)
@@ -277,7 +316,12 @@ namespace Bewize.ViewModels
         {
             App.Current.MainPage.Navigation.PushModalAsync(new CrimeTypePopupPage());
         }
+
+        public ICommand RateIconClicked { private set; get; }
+
     }
+
+
 
     public class Myratingpro_backbtnCommand : ICommand
     {

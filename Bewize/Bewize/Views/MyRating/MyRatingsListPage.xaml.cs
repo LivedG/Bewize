@@ -5,14 +5,14 @@ using Bewize.ViewModels;
 using Xamarin.Forms;
 
 namespace Bewize.Views.MyRating
-{	
-	public partial class MyRatingsListPage : ContentPage
-	{
+{
+    public partial class MyRatingsListPage : ContentPage
+    {
         MyratingsListVM VM;
 
-		public MyRatingsListPage ()
-		{
-			InitializeComponent ();
+        public MyRatingsListPage()
+        {
+            InitializeComponent();
             VM = new MyratingsListVM();
             BindingContext = VM;
         }
@@ -20,14 +20,18 @@ namespace Bewize.Views.MyRating
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            if (VM.MyRatingsDetailsList != null && VM.MyRatingsDetailsList.Count > 0)
+
+            await System.Threading.Tasks.Task.Run(() =>
             {
-                await App.Current.MainPage.DisplayAlert("", "Your ratings list is empty!.", "OK");
-
-            }
-           
+                VM.GetMyRatingsDetailsFromServer();
+            }).ContinueWith(async (t) =>
+            {
+                if (VM.MyRatingsDetailsList != null && VM.MyRatingsDetailsList.Count > 0)
+                {
+                    await App.Current.MainPage.DisplayAlert("", "Your ratings list is empty!.", "OK");
+                }
+            });
         }
-
 
         public void Backbtn_Clicked(System.Object sender, System.EventArgs e)
         {
