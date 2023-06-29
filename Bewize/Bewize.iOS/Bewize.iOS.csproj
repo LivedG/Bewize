@@ -76,7 +76,6 @@
     <Compile Include="Render_files\Custom_iosSearchbar.cs" />
     <Compile Include="Render_files\Custom_iosEntryEditor.cs" />
     <Compile Include="Render_files\SigninWithAppleserviice.cs" />
-    <None Include="GoogleService-Info.plist" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -223,6 +222,7 @@
     <BundleResource Include="Resources\Neutral.png" />
     <BundleResource Include="Resources\Sad.png" />
     <BundleResource Include="BlueLoader.json" />
+    <BundleResource Include="GoogleService-Info.plist" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Render_files\" />

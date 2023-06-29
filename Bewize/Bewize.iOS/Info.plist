@@ -28,7 +28,7 @@
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>MinimumOSVersion</key>
-	<string>8.0</string>
+	<string>12.0</string>
 	<key>NSAppleMusicUsageDescription</key>
 	<string>Application allows to access Media library usage.</string>
 	<key>NSCameraUsageDescription</key>
