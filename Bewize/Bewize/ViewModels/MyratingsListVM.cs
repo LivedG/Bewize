@@ -101,7 +101,7 @@ namespace Bewize.ViewModels
         public async void GetMyRatingsDetailsFromServer()
         {
             try
-            {
+                {
                 string webURL = APIHelper.myrating;
                 HttpHelper httpHelper = new HttpHelper();
                 APIResponse res = await httpHelper.callAPI(webURL, "");
@@ -128,27 +128,43 @@ namespace Bewize.ViewModels
 
                             foreach (var item in submittedrating.my_ratings)
                             {
+
                                 if (item.rating == "5")
                                 {
                                     item.imageName = "Joyfull.png";
+                                    if (item.title == "Overall Safety")
+                                        submittedrating.overAllRating = "BarFiveStar.png";
                                 }
                                 else if (item.rating == "4")
                                 {
                                     item.imageName = "Happy.png";
+                                    if (item.title == "Overall Safety")
+
+                                        submittedrating.overAllRating = "BarFourStar.png";
+
                                 }
                                 else
                                 if (item.rating == "3")
                                 {
                                     item.imageName = "Neutral.png";
+                                    if (item.title == "Overall Safety")
+                                        submittedrating.overAllRating = "BarThreeStar.png";
+
                                 }
                                 else
                                 if (item.rating == "2")
                                 {
                                     item.imageName = "Sad.png";
+                                    if (item.title == "Overall Safety")
+                                        submittedrating.overAllRating = "BarTwoStar.png";
+
                                 }
                                 else
                                 {
                                     item.imageName = "Frustated.png";
+                                    if (item.title == "Overall Safety")
+                                        submittedrating.overAllRating = "BarOneStar.png";
+
                                 }
                             }
 

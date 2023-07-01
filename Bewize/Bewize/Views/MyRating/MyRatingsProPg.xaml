@@ -88,7 +88,7 @@
                                                         <ImageButton   x:Name="Ratebtnone" 
                                                                        CornerRadius="22" Margin="2"
                                                                        BackgroundColor="{Binding BGColor}"
-                                                                       HeightRequest="50"
+                                                                       MinimumWidthRequest="50"
                                                                        Clicked="Ratebtn1_Clicked"
                                                                        Command="{Binding Source={StaticResource VM},Path=RateIconClicked}"
                                                                        CommandParameter="{Binding .}"

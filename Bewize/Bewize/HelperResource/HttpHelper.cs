@@ -137,7 +137,7 @@ namespace Bewize.HelperResource
                         res.success = false;
                     }
                 }
-                Debug.WriteLine("Res ----> ", res.response);
+                Debug.WriteLine("Res ----> ", res);
                 return res;
             }
             catch (Exception ex)

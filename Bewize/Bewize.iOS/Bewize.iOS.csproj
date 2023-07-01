@@ -206,7 +206,6 @@
     <BundleResource Include="Resources\Close.png" />
     <BundleResource Include="Resources\ThirdStar.png" />
     <BundleResource Include="Resources\FourStar.png" />
-    <BundleResource Include="Resources\FiveStarBar.png" />
     <BundleResource Include="Resources\usa.png" />
     <BundleResource Include="Resources\india.png" />
     <BundleResource Include="Resources\canada.jpeg" />
@@ -223,6 +222,11 @@
     <BundleResource Include="Resources\Sad.png" />
     <BundleResource Include="BlueLoader.json" />
     <BundleResource Include="GoogleService-Info.plist" />
+    <BundleResource Include="Resources\BarFiveStar.png" />
+    <BundleResource Include="Resources\BarFourStar.png" />
+    <BundleResource Include="Resources\BarOneStar.png" />
+    <BundleResource Include="Resources\BarThreeStar.png" />
+    <BundleResource Include="Resources\BarTwoStar.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Render_files\" />

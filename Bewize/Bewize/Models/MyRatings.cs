@@ -41,6 +41,7 @@ namespace Bewize.Models
         public String address { get; set; }
         public String updatedAt { get; set; }
         public String showUpdatedAt { get; set; }
+        public String overAllRating { get; set; }
         public ObservableCollection<Submittedrating> my_ratings { get; set; }
     }
 

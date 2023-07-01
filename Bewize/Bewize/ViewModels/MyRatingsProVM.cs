@@ -10,6 +10,7 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Diagnostics;
 
 namespace Bewize.ViewModels
 {
@@ -173,10 +174,12 @@ namespace Bewize.ViewModels
                 request_para.latitude = Latitude;
                 //** get  questionlist by location data **** 
                 APIResponse res = await httpHelper.callAPI(webURL, JsonConvert.SerializeObject(request_para));
+                Debug.WriteLine("----- res ---- " + res);
 
                 if (res.success)
                 {
                     List<Questionlistdetails> responselist;
+                    Debug.WriteLine("-----" + res.data);
                     var obj = JsonConvert.SerializeObject(res.data);
                     responselist = JsonConvert.DeserializeObject<List<Questionlistdetails>>(obj);
                     var Rate_questionsdetails = responselist.Find(x => x._id == "radio").question;
