@@ -53,6 +53,7 @@ namespace Bewize.HelperResource
                         content = await httpResponse.Content.ReadAsStringAsync();
                         res = JsonConvert.DeserializeObject<APIResponse>(content);
 
+                        Debug.WriteLine("Res ----> ", content);
 
                     }
                     else
@@ -67,6 +68,8 @@ namespace Bewize.HelperResource
                         }
                         httpResponse = await httpClient.GetAsync(url);
                         content = await httpResponse.Content.ReadAsStringAsync();
+                        Debug.WriteLine("Res ----> ", content);
+
                         res = JsonConvert.DeserializeObject<APIResponse>(content);
                     }
                 }
@@ -79,6 +82,8 @@ namespace Bewize.HelperResource
                         httpResponse = await httpClient.PostAsync(url, httpContent);
 
                         content = await httpResponse.Content.ReadAsStringAsync();
+                        Debug.WriteLine("Res ----> ", content);
+
                         res = JsonConvert.DeserializeObject<APIResponse>(content);
 
                     }
@@ -95,6 +100,8 @@ namespace Bewize.HelperResource
                         httpResponse = await httpClient.PostAsync(url, httpContent);
 
                         content = await httpResponse.Content.ReadAsStringAsync();
+                        Debug.WriteLine("Res ----> ", content);
+
                         res = JsonConvert.DeserializeObject<APIResponse>(content);
 
                     }
@@ -128,6 +135,8 @@ namespace Bewize.HelperResource
                     if (httpResponse.IsSuccessStatusCode)
                     {
                         content = await httpResponse.Content.ReadAsStringAsync();
+                        Debug.WriteLine("Res ----> ", content);
+
                         res = JsonConvert.DeserializeObject<APIResponse>(content);
                     }
                     else
@@ -137,7 +146,6 @@ namespace Bewize.HelperResource
                         res.success = false;
                     }
                 }
-                Debug.WriteLine("Res ----> ", res);
                 return res;
             }
             catch (Exception ex)

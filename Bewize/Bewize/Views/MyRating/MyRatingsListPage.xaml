@@ -30,7 +30,7 @@
             <Button x:Name="Backbtn" Grid.Row="0" Grid.Column="0" ImageSource="Backbtn.jpg" HeightRequest="40" WidthRequest="40" Margin="10"
                     Command="{Binding Source={StaticResource VM},Path=Closebtn_Command}"/>
         </Grid>
-        <SearchBar PlaceholderColor="#80393939" Placeholder="Search" BackgroundColor="LightGray" Margin="20,20,20,10"/>
+        <SearchBar PlaceholderColor="#80393939" Placeholder="Search" Margin="20,20,20,10"/>
 
         <ScrollView >
             <StackLayout x:Name="MyRatingListView" 

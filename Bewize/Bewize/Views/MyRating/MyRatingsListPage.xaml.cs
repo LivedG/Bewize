@@ -21,16 +21,20 @@ namespace Bewize.Views.MyRating
         {
             base.OnAppearing();
 
-            await System.Threading.Tasks.Task.Run(() =>
+            try
             {
+
                 VM.GetMyRatingsDetailsFromServer();
-            }).ContinueWith(async (t) =>
-            {
-                if (VM.MyRatingsDetailsList != null && VM.MyRatingsDetailsList.Count > 0)
+
+                if (VM.MyRatingsDetailsList != null || VM.MyRatingsDetailsList?.Count > 0)
                 {
                     await App.Current.MainPage.DisplayAlert("", "Your ratings list is empty!.", "OK");
                 }
-            });
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         public void Backbtn_Clicked(System.Object sender, System.EventArgs e)

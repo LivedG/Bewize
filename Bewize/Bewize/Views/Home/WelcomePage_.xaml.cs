@@ -23,11 +23,14 @@ namespace Bewize.Views.Home
             VM.checkLocationAccess();
         }
 
-        async void Currentlocationbtn_Clicked(System.Object sender, System.EventArgs e)
+        async void Continuebtn_Clicked(System.Object sender, System.EventArgs e)
         {
-            if (Zipcodetxt.Text != "" && Zipcodetxt.Text.Length < 7 && Zipcodetxt.Text.Length > 4) {
+            if (!string.IsNullOrEmpty(Zipcodetxt.Text) && Zipcodetxt.Text.Length < 7 && Zipcodetxt.Text.Length > 4)
+            {
                 VM.MoveForwardwithZipcode(Zipcodetxt.Text);
-            }else {
+            }
+            else
+            {
                 await App.Current.MainPage.DisplayAlert("", "valid Zipcode required", "OK");
             }
         }

@@ -35,7 +35,7 @@ namespace Bewize.Models
 
     public class MyRatingsDetails
     {
-        public String latitude { get; set; }
+        public string latitude { get; set; }
         public String longitude { get; set; }
         public String name { get; set; }
         public String address { get; set; }

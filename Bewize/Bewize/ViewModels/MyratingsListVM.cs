@@ -101,7 +101,7 @@ namespace Bewize.ViewModels
         public async void GetMyRatingsDetailsFromServer()
         {
             try
-                {
+            {
                 string webURL = APIHelper.myrating;
                 HttpHelper httpHelper = new HttpHelper();
                 APIResponse res = await httpHelper.callAPI(webURL, "");
@@ -178,12 +178,18 @@ namespace Bewize.ViewModels
                 }
                 else
                 {
-                    await App.Current.MainPage.DisplayAlert("", res.message, "OK");
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await App.Current.MainPage.DisplayAlert("", res.message, "OK");
+                    });
                 }
             }
             catch (Exception ex)
             {
-                await App.Current.MainPage.DisplayAlert("", ex.Message, "OK");
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await App.Current.MainPage.DisplayAlert("", ex.Message, "OK");
+                });
             }
         }
     }
