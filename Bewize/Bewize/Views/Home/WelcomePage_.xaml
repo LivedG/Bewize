@@ -40,7 +40,7 @@
                TextColor="#2B92FC" FontFamily="Source Sans Pro" FontAttributes="Bold" FontSize="16" HeightRequest="20" />
          
            <local:CustomEntry Margin="23,20,23,0" BackgroundColor="#00FFFFFF"  
-               FontFamily="Source Sans Pro" MaxLength="6" x:Name="Zipcodetxt"
+               FontFamily="Source Sans Pro" MaxLength="6" x:Name="Zipcodetxt"  Text="{Binding zipcode, Mode=TwoWay}"
                  FontSize="18" Keyboard="Numeric" PlaceholderColor="#80393939" Placeholder="000000">
                <!--<local:CustomEntry.Behaviors>
                      <bhv:NumberValidationBehavior/>

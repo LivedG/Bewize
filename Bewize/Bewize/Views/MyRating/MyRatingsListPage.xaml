@@ -32,7 +32,7 @@
         <SearchBar PlaceholderColor="#80393939" Placeholder="Search" BackgroundColor="#00BBBBBB" Margin="20,20,20,10" > 
         </SearchBar>
              <ScrollView > 
-              <CollectionView x:Name="MyRatingListView" x:FieldModifier="public"  BackgroundColor="#ffffff" BindableLayout.ItemsSource="{Binding MyRatingsDetailsList}" >
+              <CollectionView x:Name="MyRatingListView" x:FieldModifier="public"  BackgroundColor="#ffffff" > <!--BindableLayout.ItemsSource="{Binding MyRatingsDetailsList}" >-->
                   <BindableLayout.ItemTemplate>
                   <DataTemplate>
                       <Frame Margin="15,10,15,10" BorderColor="#E2E2E2" BackgroundColor="#ffffff" HasShadow="True" IsClippedToBounds="True" CornerRadius="25"> 
@@ -59,7 +59,7 @@
                                <Button Grid.Row="3" Grid.Column="0"  VerticalOptions="Center" Margin="0,0,0,-12"  HorizontalOptions="Start" FontSize="Medium" FontAttributes="Bold" Text="View"
                                        TextColor="CornflowerBlue" BackgroundColor="#00ffffff"  Clicked="Button_Clicked"></Button>
                                 <Label  Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" VerticalOptions="Center" HeightRequest="0.6" BackgroundColor= "#959595"></Label>
-                                <!--<StackLayout x:Name="contactNestedList" BindableLayout.ItemsSource="{Binding MyRatingsDetailsList.my_ratings}" HeightRequest="150">
+                                <StackLayout x:Name="contactNestedList" BindableLayout.ItemsSource="{Binding MyRatingsDetailsList.my_ratings}" HeightRequest="150">
                                     <BindableLayout.ItemTemplate>
                                         <DataTemplate>
                                             <Grid>
@@ -77,7 +77,7 @@
                                             </Grid>
                                         </DataTemplate>
                                     </BindableLayout.ItemTemplate>
-                                </StackLayout>-->
+                                </StackLayout>
                                 <Label Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" VerticalOptions="Center" HeightRequest="0.6" BackgroundColor= "#959595" Margin="3,0,3,0"></Label>
                                 <Label Grid.Row="7" Grid.Column="0"  Grid.ColumnSpan="3" Text="Comment: Test " FontSize="18" Margin="5,-12,5,0" FontAttributes="Bold" TextColor="#000000" VerticalOptions="Center" VerticalTextAlignment="Center" HeightRequest="22"></Label>
                       </Grid> </Frame> </DataTemplate>

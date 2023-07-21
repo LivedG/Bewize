@@ -12,20 +12,34 @@ using Newtonsoft.Json;
 using Plugin.Permissions;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.GoogleMaps;
 //using Xamarin.Forms.Maps;
 
 
 
 namespace Bewize.ViewModels
 {
-    public class WelcomepageVM
+    public class WelcomepageVM : BaseViewModel
     {
         public UsercurrentlocationbtnCommand Currentlocationbtncmd { get; set; }
         public ConitnuewithZipcodeCommand zipcodecontinuebtncmd { get; set; }
         public welcomescreenbackbtnCommand welcomebackbtn_cmd { get; set; }
         CancellationTokenSource cts;
+        
         MapHelper Location_Data = new MapHelper();
-     //   Geocoder geoCoder = new Geocoder();
+        Geocoder geoCoder = new Geocoder();
+
+        private string _zipcode { get; set; }
+        public string zipcode
+        {
+            get { return _zipcode; }
+            set
+            {
+                _zipcode = value;
+                OnPropertyChanged();
+            }
+        }
+
 
         public WelcomepageVM()
         {

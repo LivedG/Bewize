@@ -25,11 +25,15 @@ namespace Bewize.Views.Home
 
         async void Currentlocationbtn_Clicked(System.Object sender, System.EventArgs e)
         {
-            if (Zipcodetxt.Text != "" && Zipcodetxt.Text.Length < 7 && Zipcodetxt.Text.Length > 4) {
-                VM.MoveForwardwithZipcode(Zipcodetxt.Text);
-            }else {
-                await App.Current.MainPage.DisplayAlert("", "valid Zipcode required", "OK");
-            }
+            //if (VM.zipcode != "")
+            //{
+            //    VM.MoveForwardwithZipcode(VM.zipcode);
+            //}
+            //else
+            //{
+            //    await App.Current.MainPage.DisplayAlert("", "valid Zipcode required", "OK");
+            //}
+           // await App.Current.MainPage.DisplayAlert("", "valid Zipcode required", "OK");
         }
     }
 }

@@ -48,7 +48,7 @@ namespace Bewize.ViewModels
         {
             Closebtn_Command = new ClosebtnCommand(this);
            
-            this.GetMyRatingsDetailsFromServer();
+            //this.GetMyRatingsDetailsFromServer();
         }
 
         public async Task<string> getLocationtitleAsync(string lat, string lon) {

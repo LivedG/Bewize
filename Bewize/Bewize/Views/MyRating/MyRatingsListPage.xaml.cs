@@ -20,11 +20,11 @@ namespace Bewize.Views.MyRating
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            if (VM.MyRatingsDetailsList != null && VM.MyRatingsDetailsList.Count > 0)
-            {
-                await App.Current.MainPage.DisplayAlert("", "Your ratings list is empty!.", "OK");
+           // if (VM.MyRatingsDetailsList != null && VM.MyRatingsDetailsList.Count > 0)
+            //{
+            //    await App.Current.MainPage.DisplayAlert("", "Your ratings list is empty!.", "OK");
 
-            }
+            //}
            
         }
 
